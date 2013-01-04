@@ -64,7 +64,6 @@ This is primarilly intended for authors/developers.
 
 =over
 
-=item *
     git checkout git://github.com/dictyBase/Modware-Loader.git
 
     cpanm -n Dist::Zilla
