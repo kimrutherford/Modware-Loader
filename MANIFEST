@@ -5,6 +5,7 @@ MANIFEST
 MANIFEST.SKIP
 META.json
 META.yml
+Readme.html
 bin/chado2dicty_gff3_parallel.sh
 bin/discoideum_tblastn_filter.pl
 bin/modware

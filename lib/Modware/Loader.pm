@@ -35,9 +35,9 @@ developer release,  suit your script accordingly if you want to use the stable o
 
 =head2 Using cpanm
 
-=over
+=head3 Single step
 
-=item Single step
+=over
 
   $_> curl -o BioPortal-WebService.tar.gz -L -k \
      https://github.com/dictyBase/BioPortal-WebService/archive/build/develop.tar.gz && \
@@ -47,12 +47,12 @@ developer release,  suit your script accordingly if you want to use the stable o
      cpanm -n Modware-Loader.tar.gz && \
      rm BioPortal-WebService.tar.gz Modware-Loader.tar.gz
 
-=item Manually
+=back
+
+=head3 Manually
 
 Download the BioPortal-Webservice and Modware-Loader tarballs and invoke B<cpanm> on them.
 Read the included B<INSTALL> file for details.
-
-=back
 
 =head2 Using Build.PL,  cpan and friends
 

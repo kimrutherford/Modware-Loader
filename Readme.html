@@ -1,0 +1,68 @@
+<h1>NAME</h1>
+
+<p>Modware::Loader</p>
+
+<h1>VERSION</h1>
+
+<p>version 1.0.0</p>
+
+<h1>NAME</h1>
+
+<p>Modware::Loader -  Command line apps for Chado relational database </p>
+
+<p><a href="http://gmod.org/wiki/Introduction_to_Chado">Chado</a> is an open-source modular database
+schema for biological data. This distribution provides <a href="http://search.cpan.org/perldoc?MooseX::App::Cmd">MooseX::App::Cmd</a> based command
+line applications to import and export biological data from Chado database.</p>
+
+<h1>INSTALLATION</h1>
+
+<p>First you have to install <a href="https://github.com/dictyBase/BioPortal-WebService">BioPortal</a>
+distribution from github. Since none of this module is yet to ready for <strong>cpan</strong>,  you have to install it
+directly from <strong>github</strong>. For a stable release,  use any of the tarball from git <strong>tag</strong> and
+for a developer release use the <strong>build/develop</strong> branch. All the recepies below use the
+developer release,  suit your script accordingly if you want to use the stable one.</p>
+
+<h2>Using cpanm</h2>
+
+<ul>
+<li><p>Single step</p>
+
+<p>$_&gt; curl -o BioPortal-WebService.tar.gz -L -k \
+   https://github.com/dictyBase/BioPortal-WebService/archive/build/develop.tar.gz &amp;&amp; \
+   cpanm -n BioPortal-WebService.tar.gz  &amp;&amp; \
+   curl -o Modware-Loader.tar.gz -L -k \
+   https://github.com/dictyBase/Modware-Loader/archive/build/develop.tar.gz &amp;&amp; \
+   cpanm -n Modware-Loader.tar.gz &amp;&amp; \
+   rm BioPortal-WebService.tar.gz Modware-Loader.tar.gz</p></li>
+<li><p>Manually</p></li>
+</ul>
+
+<p>Download the BioPortal-Webservice and Modware-Loader tarballs and invoke <strong>cpanm</strong> on them.
+Read the included <strong>INSTALL</strong> file for details.</p>
+
+<h2>Using Build.PL,  cpan and friends</h2>
+
+<p>Just follow the instuctions in the <strong>INSTALL</strong> file.</p>
+
+<h2>Directly from the git repository</h2>
+
+<p>This is primarilly intended for authors/developers.</p>
+
+<pre><code>git checkout git://github.com/dictyBase/Modware-Loader.git
+cpanm -n Dist::Zilla
+curl -o BioPortal-WebService.tar.gz -L -k \
+   https://github.com/dictyBase/BioPortal-WebService/archive/build/develop.tar.gz &amp;&amp; \
+dzil listdeps --author --missing | cpanm -n
+dzil install
+</code></pre>
+
+<h1>AUTHOR</h1>
+
+<p>Siddhartha Basu <a href="mailto:biosidd@gmail.com">biosidd@gmail.com</a></p>
+
+<h1>COPYRIGHT AND LICENSE</h1>
+
+<p>This software is copyright (c) 2011 by Siddhartha Basu.</p>
+
+<p>This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.</p>
