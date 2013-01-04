@@ -54,18 +54,14 @@ my %module_build_args = (
     "bin/discoideum_tblastn_filter.pl",
     "bin/modware",
     "bin/modware-export",
-    "bin/modware-filter",
     "bin/modware-load",
-    "bin/modware-report",
     "bin/modware-transform",
     "bin/modware-update",
     "bin/chado2dicty_gff3_parallel.sh",
     "bin/discoideum_tblastn_filter.pl",
     "bin/modware",
     "bin/modware-export",
-    "bin/modware-filter",
     "bin/modware-load",
-    "bin/modware-report",
     "bin/modware-transform",
     "bin/modware-update"
   ]
