@@ -39,7 +39,6 @@ developer release,  suit your script accordingly if you want to use the stable o
 
 =item Single step
 
-  C<
   $_> curl -o BioPortal-WebService.tar.gz -L -k \
        https://github.com/dictyBase/BioPortal-WebService/archive/build/develop.tar.gz && \
        cpanm -n BioPortal-WebService.tar.gz  && \
@@ -47,7 +46,6 @@ developer release,  suit your script accordingly if you want to use the stable o
        https://github.com/dictyBase/Modware-Loader/archive/build/develop.tar.gz && \
        cpanm -n Modware-Loader.tar.gz && \
        rm BioPortal-WebService.tar.gz Modware-Loader.tar.gz
-   >
 
 =item Manually
 
@@ -64,6 +62,9 @@ Just follow the instuctions in the B<INSTALL> file.
 
 This is primarilly intended for authors/developers.
 
+=over
+
+=item *
     git checkout git://github.com/dictyBase/Modware-Loader.git
 
     cpanm -n Dist::Zilla
@@ -74,6 +75,8 @@ This is primarilly intended for authors/developers.
     dzil listdeps --author --missing | cpanm -n
 
     dzil install
+
+=back
 
 =head1 AUTHOR
 
