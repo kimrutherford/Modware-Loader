@@ -4,6 +4,7 @@ requires "BioPortal::WebService" => "v1.0.0";
 requires "DBD::Oracle" => "1.52";
 requires "File::Find::Rule" => "0.32";
 requires "Log::Log4perl" => "1.40";
+requires "Math::Base36" => "0.10";
 requires "MooseX::App::Cmd" => "0.06";
 requires "MooseX::Attribute::Dependent" => "v1.1.2";
 requires "MooseX::ConfigFromFile" => "0.02";

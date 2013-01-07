@@ -60,6 +60,7 @@ eval { $v .= pmver('File::Find::Rule','0.32') };
 eval { $v .= pmver('GOBO','0.03') };
 eval { $v .= pmver('Log::Dispatchouli','2.005') };
 eval { $v .= pmver('Log::Log4perl','1.40') };
+eval { $v .= pmver('Math::Base36','0.10') };
 eval { $v .= pmver('Module::Build','0.3601') };
 eval { $v .= pmver('Modware','0.001') };
 eval { $v .= pmver('MooseX::App::Cmd','0.06') };
