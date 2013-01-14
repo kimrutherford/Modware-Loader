@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado;
 {
-    $Modware::EventHandler::FeatureReader::Chado::VERSION = '1.0.0';
+    $Modware::EventHandler::FeatureReader::Chado::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -174,7 +174,7 @@ Modware::EventHandler::FeatureReader::Chado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

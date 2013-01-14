@@ -1,6 +1,6 @@
 package Modware::Load::Command::dropontofromchado;
 {
-    $Modware::Load::Command::dropontofromchado::VERSION = '1.0.0';
+    $Modware::Load::Command::dropontofromchado::VERSION = '1.0.1';
 }
 use strict;
 use namespace::autoclean;
@@ -78,7 +78,7 @@ Modware::Load::Command::dropontofromchado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 NAME
 

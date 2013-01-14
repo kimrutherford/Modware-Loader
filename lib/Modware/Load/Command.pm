@@ -1,6 +1,6 @@
 package Modware::Load::Command;
 {
-    $Modware::Load::Command::VERSION = '1.0.0';
+    $Modware::Load::Command::VERSION = '1.0.1';
 }
 
 use strict;
@@ -101,7 +101,7 @@ Modware::Load::Command
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

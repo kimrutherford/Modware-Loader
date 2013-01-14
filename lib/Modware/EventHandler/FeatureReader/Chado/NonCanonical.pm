@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::NonCanonical;
 {
-    $Modware::EventHandler::FeatureReader::Chado::NonCanonical::VERSION = '1.0.0';
+    $Modware::EventHandler::FeatureReader::Chado::NonCanonical::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -56,7 +56,7 @@ Modware::EventHandler::FeatureReader::Chado::NonCanonical
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

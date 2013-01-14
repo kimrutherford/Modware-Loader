@@ -1,6 +1,6 @@
 package Modware::Loader::Adhoc::Ontology;
 {
-    $Modware::Loader::Adhoc::Ontology::VERSION = '1.0.0';
+    $Modware::Loader::Adhoc::Ontology::VERSION = '1.0.1';
 }
 
 use namespace::autoclean;
@@ -363,7 +363,7 @@ Modware::Loader::Adhoc::Ontology
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

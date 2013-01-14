@@ -1,6 +1,6 @@
 package Modware::Role::Command::CanCompress;
 {
-    $Modware::Role::Command::CanCompress::VERSION = '1.0.0';
+    $Modware::Role::Command::CanCompress::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -43,7 +43,7 @@ Modware::Role::Command::CanCompress
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

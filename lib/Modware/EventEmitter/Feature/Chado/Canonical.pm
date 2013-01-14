@@ -1,6 +1,6 @@
 package Modware::EventEmitter::Feature::Chado::Canonical;
 {
-    $Modware::EventEmitter::Feature::Chado::Canonical::VERSION = '1.0.0';
+    $Modware::EventEmitter::Feature::Chado::Canonical::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -176,7 +176,7 @@ Modware::EventEmitter::Feature::Chado::Canonical
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

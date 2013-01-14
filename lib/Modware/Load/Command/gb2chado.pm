@@ -1,6 +1,6 @@
 package Modware::Load::Command::gb2chado;
 {
-    $Modware::Load::Command::gb2chado::VERSION = '1.0.0';
+    $Modware::Load::Command::gb2chado::VERSION = '1.0.1';
 }
 use strict;
 use namespace::autoclean;
@@ -124,7 +124,7 @@ Modware::Load::Command::gb2chado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

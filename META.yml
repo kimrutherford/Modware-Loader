@@ -40,4 +40,4 @@ requires:
   MooseX::Getopt: 0.50
   Tie::Cache: 0.19
   perl: 5.010
-version: 1.0.0
+version: 1.0.1

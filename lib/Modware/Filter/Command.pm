@@ -1,6 +1,6 @@
 package Modware::Filter::Command;
 {
-    $Modware::Filter::Command::VERSION = '1.0.0';
+    $Modware::Filter::Command::VERSION = '1.0.1';
 }
 
 use namespace::autoclean;
@@ -23,7 +23,7 @@ Modware::Filter::Command
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

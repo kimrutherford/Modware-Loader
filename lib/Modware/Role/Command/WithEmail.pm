@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithEmail;
 {
-    $Modware::Role::Command::WithEmail::VERSION = '1.0.0';
+    $Modware::Role::Command::WithEmail::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -106,7 +106,7 @@ Modware::Role::Command::WithEmail
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

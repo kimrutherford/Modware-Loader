@@ -1,6 +1,6 @@
 package Modware::MOD::Registry;
 {
-    $Modware::MOD::Registry::VERSION = '1.0.0';
+    $Modware::MOD::Registry::VERSION = '1.0.1';
 }
 use namespace::autoclean;
 use Moose;
@@ -84,7 +84,7 @@ Modware::MOD::Registry
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

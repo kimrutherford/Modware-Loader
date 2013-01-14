@@ -1,6 +1,6 @@
 package Modware::Filter;
 {
-    $Modware::Filter::VERSION = '1.0.0';
+    $Modware::Filter::VERSION = '1.0.1';
 }
 
 #Other modules
@@ -20,7 +20,7 @@ Modware::Filter
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 NAME
 

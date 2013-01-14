@@ -1,6 +1,6 @@
 package Modware::Collection::FeatureStack;
 {
-    $Modware::Collection::FeatureStack::VERSION = '1.0.0';
+    $Modware::Collection::FeatureStack::VERSION = '1.0.1';
 }
 use namespace::autoclean;
 use Moose;
@@ -91,7 +91,7 @@ Modware::Collection::FeatureStack
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

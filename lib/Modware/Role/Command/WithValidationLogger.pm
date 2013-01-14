@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithValidationLogger;
 {
-    $Modware::Role::Command::WithValidationLogger::VERSION = '1.0.0';
+    $Modware::Role::Command::WithValidationLogger::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -59,7 +59,7 @@ Modware::Role::Command::WithValidationLogger
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

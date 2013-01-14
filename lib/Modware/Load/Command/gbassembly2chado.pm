@@ -1,6 +1,6 @@
 package Modware::Load::Command::gbassembly2chado;
 {
-    $Modware::Load::Command::gbassembly2chado::VERSION = '1.0.0';
+    $Modware::Load::Command::gbassembly2chado::VERSION = '1.0.1';
 }
 
 use strict;
@@ -104,7 +104,7 @@ Modware::Load::Command::gbassembly2chado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 

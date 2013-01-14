@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictycuratedgff3;
 {
-    $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.0.0';
+    $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.0.1';
 }
 
 use strict;
@@ -114,7 +114,7 @@ Modware::Export::Command::chado2dictycuratedgff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 NAME
 

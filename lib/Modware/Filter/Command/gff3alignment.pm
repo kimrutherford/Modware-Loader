@@ -1,6 +1,6 @@
 package Modware::Filter::Command::gff3alignment;
 {
-    $Modware::Filter::Command::gff3alignment::VERSION = '1.0.0';
+    $Modware::Filter::Command::gff3alignment::VERSION = '1.0.1';
 }
 
 use namespace::autoclean;
@@ -196,7 +196,7 @@ Modware::Filter::Command::gff3alignment
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 NAME
 

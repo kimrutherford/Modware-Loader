@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithReportLogger;
 {
-    $Modware::Role::Command::WithReportLogger::VERSION = '1.0.0';
+    $Modware::Role::Command::WithReportLogger::VERSION = '1.0.1';
 }
 
 # Other modules:
@@ -80,7 +80,7 @@ Modware::Role::Command::WithReportLogger
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Modware::Fetch::Command;
 {
-    $Modware::Fetch::Command::VERSION = '1.0.0';
+    $Modware::Fetch::Command::VERSION = '1.0.1';
 }
 
 use strict;
@@ -93,7 +93,7 @@ Modware::Fetch::Command
 
 =head1 VERSION
 
-version 1.0.0
+version 1.0.1
 
 =head1 SYNOPSIS
 
