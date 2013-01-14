@@ -1,6 +1,6 @@
 package Modware::Export::Command;
 {
-    $Modware::Export::Command::VERSION = '1.0.1';
+    $Modware::Export::Command::VERSION = '1.0.0';
 }
 
 use strict;
@@ -177,7 +177,7 @@ Modware::Export::Command
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

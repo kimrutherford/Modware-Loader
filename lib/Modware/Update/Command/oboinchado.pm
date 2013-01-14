@@ -1,6 +1,6 @@
 package Modware::Update::Command::oboinchado;
 {
-    $Modware::Update::Command::oboinchado::VERSION = '1.0.1';
+    $Modware::Update::Command::oboinchado::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -445,7 +445,7 @@ Modware::Update::Command::oboinchado
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

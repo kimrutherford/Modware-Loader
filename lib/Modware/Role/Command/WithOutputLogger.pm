@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithOutputLogger;
 {
-    $Modware::Role::Command::WithOutputLogger::VERSION = '1.0.1';
+    $Modware::Role::Command::WithOutputLogger::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -87,7 +87,7 @@ Modware::Role::Command::WithOutputLogger
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

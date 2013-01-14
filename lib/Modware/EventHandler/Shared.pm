@@ -1,6 +1,6 @@
 package Modware::EventHandler::Shared;
 {
-    $Modware::EventHandler::Shared::VERSION = '1.0.1';
+    $Modware::EventHandler::Shared::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -29,7 +29,7 @@ Modware::EventHandler::Shared
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

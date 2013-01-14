@@ -52,7 +52,7 @@ parallel-gff3
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

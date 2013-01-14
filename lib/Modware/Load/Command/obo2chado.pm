@@ -1,6 +1,6 @@
 package Modware::Load::Command::obo2chado;
 {
-    $Modware::Load::Command::obo2chado::VERSION = '1.0.1';
+    $Modware::Load::Command::obo2chado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;
@@ -81,7 +81,7 @@ Modware::Load::Command::obo2chado
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

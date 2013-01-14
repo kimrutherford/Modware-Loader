@@ -1,6 +1,6 @@
 package Modware::Export::Command::dictypub;
 {
-    $Modware::Export::Command::dictypub::VERSION = '1.0.1';
+    $Modware::Export::Command::dictypub::VERSION = '1.0.0';
 }
 use strict;
 
@@ -211,7 +211,7 @@ Modware::Export::Command::dictypub
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

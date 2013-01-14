@@ -1,6 +1,6 @@
 package Modware::Export::Command::dictygaf;
 {
-    $Modware::Export::Command::dictygaf::VERSION = '1.0.1';
+    $Modware::Export::Command::dictygaf::VERSION = '1.0.0';
 }
 use strict;
 
@@ -162,7 +162,7 @@ Modware::Export::Command::dictygaf
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

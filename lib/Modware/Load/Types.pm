@@ -1,6 +1,6 @@
 package Modware::Load::Types;
 {
-    $Modware::Load::Types::VERSION = '1.0.1';
+    $Modware::Load::Types::VERSION = '1.0.0';
 }
 
 use MooseX::Types -declare =>
@@ -32,7 +32,7 @@ Modware::Load::Types
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

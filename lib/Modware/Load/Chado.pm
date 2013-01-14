@@ -1,6 +1,6 @@
 package Modware::Load::Chado;
 {
-    $Modware::Load::Chado::VERSION = '1.0.1';
+    $Modware::Load::Chado::VERSION = '1.0.0';
 }
 
 use strict;
@@ -46,7 +46,7 @@ Modware::Load::Chado
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

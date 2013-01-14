@@ -1,6 +1,6 @@
 package Modware::Loader::Ontology::Helper;
 {
-    $Modware::Loader::Ontology::Helper::VERSION = '1.0.1';
+    $Modware::Loader::Ontology::Helper::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -159,7 +159,7 @@ Modware::Loader::Ontology::Helper
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

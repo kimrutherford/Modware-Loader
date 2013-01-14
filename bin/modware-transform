@@ -2,7 +2,7 @@
 
 package transform;
 {
-  $transform::VERSION = '1.0.1';
+  $transform::VERSION = '1.0.0';
 }
 
 use FindBin qw/$Bin/;
@@ -21,7 +21,7 @@ transform
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

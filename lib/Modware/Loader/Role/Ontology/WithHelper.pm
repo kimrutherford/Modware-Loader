@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::WithHelper;
 {
-    $Modware::Loader::Role::Ontology::WithHelper::VERSION = '1.0.1';
+    $Modware::Loader::Role::Ontology::WithHelper::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -174,7 +174,7 @@ Modware::Loader::Role::Ontology::WithHelper
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

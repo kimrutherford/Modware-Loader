@@ -2,7 +2,7 @@
 
 package generate;
 {
-  $generate::VERSION = '1.0.1';
+  $generate::VERSION = '1.0.0';
 }
 use Modware::Generator;
 
@@ -18,7 +18,7 @@ generate
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithInput;
 {
-    $Modware::Role::Command::WithInput::VERSION = '1.0.1';
+    $Modware::Role::Command::WithInput::VERSION = '1.0.0';
 }
 
 use strict;
@@ -49,7 +49,7 @@ Modware::Role::Command::WithInput
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

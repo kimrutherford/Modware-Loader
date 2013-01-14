@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2fasta;
 {
-    $Modware::Export::Command::chado2fasta::VERSION = '1.0.1';
+    $Modware::Export::Command::chado2fasta::VERSION = '1.0.0';
 }
 use strict;
 
@@ -485,7 +485,7 @@ Modware::Export::Command::chado2fasta
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

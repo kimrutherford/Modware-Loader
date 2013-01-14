@@ -1,6 +1,6 @@
 package Modware::Load::Command::adhocobo2chado;
 {
-    $Modware::Load::Command::adhocobo2chado::VERSION = '1.0.1';
+    $Modware::Load::Command::adhocobo2chado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;
@@ -64,7 +64,7 @@ Modware::Load::Command::adhocobo2chado
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 DESCRIPTION
 

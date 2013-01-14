@@ -1,6 +1,6 @@
 package Modware::Storage::Connection;
 {
-    $Modware::Storage::Connection::VERSION = '1.0.1';
+    $Modware::Storage::Connection::VERSION = '1.0.0';
 }
 use namespace::autoclean;
 use Moose;
@@ -25,7 +25,7 @@ Modware::Storage::Connection
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

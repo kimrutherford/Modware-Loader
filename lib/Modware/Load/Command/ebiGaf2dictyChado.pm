@@ -5,7 +5,7 @@ use warnings;
 
 package Modware::Load::Command::ebiGaf2dictyChado;
 {
-    $Modware::Load::Command::ebiGaf2dictyChado::VERSION = '1.0.1';
+    $Modware::Load::Command::ebiGaf2dictyChado::VERSION = '1.0.0';
 }
 
 use Bio::Chado::Schema;
@@ -165,7 +165,7 @@ sub find {
 
 package EBIQuery;
 {
-    $EBIQuery::VERSION = '1.0.1';
+    $EBIQuery::VERSION = '1.0.0';
 }
 
 use LWP::UserAgent;
@@ -218,7 +218,7 @@ sub query_ebi {
 
 package GAFManager;
 {
-    $GAFManager::VERSION = '1.0.1';
+    $GAFManager::VERSION = '1.0.0';
 }
 
 use Moose;
@@ -350,7 +350,7 @@ sub parse {
 
 package Annotation;
 {
-    $Annotation::VERSION = '1.0.1';
+    $Annotation::VERSION = '1.0.0';
 }
 
 use Moose;
@@ -517,7 +517,7 @@ Modware::Load::Command::ebiGaf2dictyChado
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

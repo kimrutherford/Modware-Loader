@@ -1,6 +1,6 @@
 package Modware::Transform::Command;
 {
-    $Modware::Transform::Command::VERSION = '1.0.1';
+    $Modware::Transform::Command::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -40,7 +40,7 @@ Modware::Transform::Command
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

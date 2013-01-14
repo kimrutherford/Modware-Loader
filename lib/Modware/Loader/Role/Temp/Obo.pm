@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Temp::Obo;
 {
-    $Modware::Loader::Role::Temp::Obo::VERSION = '1.0.1';
+    $Modware::Loader::Role::Temp::Obo::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -182,7 +182,7 @@ Modware::Loader::Role::Temp::Obo
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

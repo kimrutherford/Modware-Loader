@@ -1,6 +1,6 @@
 package Modware::Update;
 {
-    $Modware::Update::VERSION = '1.0.1';
+    $Modware::Update::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -23,7 +23,7 @@ Modware::Update
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

@@ -1,6 +1,6 @@
 package Modware::Generator::Command;
 {
-    $Modware::Generator::Command::VERSION = '1.0.1';
+    $Modware::Generator::Command::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -26,7 +26,7 @@ Modware::Generator::Command
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

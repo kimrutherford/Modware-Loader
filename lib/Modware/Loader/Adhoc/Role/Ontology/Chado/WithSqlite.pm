@@ -1,6 +1,6 @@
 package Modware::Loader::Adhoc::Role::Ontology::Chado::WithSqlite;
 {
-    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithSqlite::VERSION = '1.0.1';
+    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithSqlite::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -20,7 +20,7 @@ Modware::Loader::Adhoc::Role::Ontology::Chado::WithSqlite
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty;
 {
-    $Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty::VERSION = '1.0.1';
+    $Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -120,7 +120,7 @@ Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

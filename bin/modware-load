@@ -2,7 +2,7 @@
 
 package load;
 {
-  $load::VERSION = '1.0.1';
+  $load::VERSION = '1.0.0';
 }
 use Modware::Load;
 
@@ -18,7 +18,7 @@ load
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

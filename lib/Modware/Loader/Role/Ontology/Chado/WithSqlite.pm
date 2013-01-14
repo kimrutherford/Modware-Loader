@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Chado::WithSqlite;
 {
-    $Modware::Loader::Role::Ontology::Chado::WithSqlite::VERSION = '1.0.1';
+    $Modware::Loader::Role::Ontology::Chado::WithSqlite::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -307,7 +307,7 @@ Modware::Loader::Role::Ontology::Chado::WithSqlite
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

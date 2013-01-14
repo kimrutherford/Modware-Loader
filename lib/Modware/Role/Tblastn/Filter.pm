@@ -1,6 +1,6 @@
 package Modware::Role::Tblastn::Filter;
 {
-    $Modware::Role::Tblastn::Filter::VERSION = '1.0.1';
+    $Modware::Role::Tblastn::Filter::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -262,7 +262,7 @@ Modware::Role::Tblastn::Filter
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

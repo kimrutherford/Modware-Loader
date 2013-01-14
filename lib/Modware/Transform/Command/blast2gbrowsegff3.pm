@@ -1,6 +1,6 @@
 package Modware::Transform::Command::blast2gbrowsegff3;
 {
-    $Modware::Transform::Command::blast2gbrowsegff3::VERSION = '1.0.1';
+    $Modware::Transform::Command::blast2gbrowsegff3::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -450,7 +450,7 @@ Modware::Transform::Command::blast2gbrowsegff3
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

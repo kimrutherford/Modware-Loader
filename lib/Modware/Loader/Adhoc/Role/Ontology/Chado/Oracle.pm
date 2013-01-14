@@ -1,6 +1,6 @@
 package Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle;
 {
-    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle::VERSION = '1.0.1';
+    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -48,7 +48,7 @@ Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

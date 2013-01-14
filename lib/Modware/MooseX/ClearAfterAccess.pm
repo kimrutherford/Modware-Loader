@@ -1,6 +1,6 @@
 package Modware::MooseX::ClearAfterAccess;
 {
-    $Modware::MooseX::ClearAfterAccess::VERSION = '1.0.1';
+    $Modware::MooseX::ClearAfterAccess::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -16,7 +16,7 @@ Moose::Exporter->setup_import_methods(
 package Moose::Meta::Attribute::Custom::Trait::ClearAfterAccess;
 {
     $Moose::Meta::Attribute::Custom::Trait::ClearAfterAccess::VERSION
-        = '1.0.1';
+        = '1.0.0';
 }
 
 sub register_implementation {
@@ -35,7 +35,7 @@ Modware::MooseX::ClearAfterAccess
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

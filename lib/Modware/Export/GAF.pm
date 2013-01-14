@@ -1,6 +1,6 @@
 package Modware::Export::GAF;
 {
-    $Modware::Export::GAF::VERSION = '1.0.1';
+    $Modware::Export::GAF::VERSION = '1.0.0';
 }
 use strict;
 
@@ -356,7 +356,7 @@ Modware::Export::GAF
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 NAME
 

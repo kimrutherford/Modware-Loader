@@ -1,6 +1,6 @@
 package Modware::SearchIO::Blast;
 {
-    $Modware::SearchIO::Blast::VERSION = '1.0.1';
+    $Modware::SearchIO::Blast::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -127,7 +127,7 @@ Modware::SearchIO::Blast
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 

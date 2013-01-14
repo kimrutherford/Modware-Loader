@@ -1,6 +1,6 @@
 package Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql;
 {
-    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.1';
+    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -20,7 +20,7 @@ Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 AUTHOR
 

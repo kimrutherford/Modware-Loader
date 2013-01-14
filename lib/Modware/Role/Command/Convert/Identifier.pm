@@ -1,6 +1,6 @@
 package Modware::Role::Command::Convert::Identifier;
 {
-    $Modware::Role::Command::Convert::Identifier::VERSION = '1.0.1';
+    $Modware::Role::Command::Convert::Identifier::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -31,7 +31,7 @@ Modware::Role::Command::Convert::Identifier
 
 =head1 VERSION
 
-version 1.0.1
+version 1.0.0
 
 =head1 SYNOPSIS
 
