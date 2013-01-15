@@ -62,7 +62,7 @@ lib/Modware/Load/Command.pm
 lib/Modware/Load/Command/adhocobo2chado.pm
 lib/Modware/Load/Command/bioportalobo2chado.pm
 lib/Modware/Load/Command/dropontofromchado.pm
-lib/Modware/Load/Command/ebiGaf2dictyChado.pm
+lib/Modware/Load/Command/ebigaf2chado.pm
 lib/Modware/Load/Command/gb2chado.pm
 lib/Modware/Load/Command/gbassembly2chado.pm
 lib/Modware/Load/Command/obo2chado.pm
