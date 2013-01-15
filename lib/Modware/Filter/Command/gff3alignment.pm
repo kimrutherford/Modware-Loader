@@ -1,6 +1,6 @@
 package Modware::Filter::Command::gff3alignment;
 {
-    $Modware::Filter::Command::gff3alignment::VERSION = '1.0.0';
+  $Modware::Filter::Command::gff3alignment::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -144,7 +144,7 @@ sub _write_gff3 {
         $hashref->{strand} = undef;
         $hashref->{score}  = $sf->score;
 
-        if ( my $strand = $sf->strand ) {
+        if (my $strand = $sf->strand ) {
             $hashref->{strand} = $strand == -1 ? '-' : '+';
         }
 

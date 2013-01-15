@@ -1,6 +1,6 @@
 package Modware::Export::GAF;
 {
-    $Modware::Export::GAF::VERSION = '1.0.0';
+  $Modware::Export::GAF::VERSION = '1.0.0';
 }
 use strict;
 
@@ -9,7 +9,6 @@ use namespace::autoclean;
 use Moose;
 use Try::Tiny;
 use File::Spec::Functions;
-
 #use GOBO::TermNode;
 #use GOBO::Annotation;
 #use GOBO::Writers::GAFWriter;

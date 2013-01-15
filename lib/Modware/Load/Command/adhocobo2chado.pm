@@ -1,6 +1,6 @@
 package Modware::Load::Command::adhocobo2chado;
 {
-    $Modware::Load::Command::adhocobo2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::adhocobo2chado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;
@@ -42,13 +42,14 @@ sub execute {
 
     #4. do upsert of terms
     $loader->update_or_create_term($_) for @{ $onto->get_terms };
-
     #5. do insert of relationships
     $guard->commit;
 
-    my $guard2 = $schema->txn_scope_guard;
-    $loader->create_relationship($_) for @{ $onto->get_relationships };
+
+    my $guard2  = $schema->txn_scope_guard;
+    $loader->create_relationship($_) for @{$onto->get_relationships};
     $guard2->commit;
+
 
 }
 

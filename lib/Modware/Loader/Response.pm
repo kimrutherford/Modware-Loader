@@ -1,18 +1,19 @@
 package Modware::Loader::Response;
 {
-    $Modware::Loader::Response::VERSION = '1.0.0';
+  $Modware::Loader::Response::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
 use Moose;
 
+
 has [qw/is_error is_success/] => (
-    is      => 'rw',
-    isa     => 'Bool',
-    default => 0,
+	is => 'rw', 
+	isa => 'Bool', 
+	default => 0, 
 );
 
-has 'message' => ( is => 'rw', isa => 'Str' );
+has 'message' => ( is => 'rw',  isa => 'Str');
 
 __PACKAGE__->meta->make_immutable;
 

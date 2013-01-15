@@ -1,6 +1,6 @@
 package Modware::Role::EventHandler::Genome::Chado;
 {
-    $Modware::Role::EventHandler::Genome::Chado::VERSION = '1.0.0';
+  $Modware::Role::EventHandler::Genome::Chado::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -35,7 +35,7 @@ sub read_organism {
         if ( !$self->has_genus ) {
             if ( !$self->common_name ) {
                 $event->logger->logcroak(
-                    "at least species,  genus or common_name has to be set");
+                    "at least species,  genus or common_name has to be set" );
             }
         }
     }

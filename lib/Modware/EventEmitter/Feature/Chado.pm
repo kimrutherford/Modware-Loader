@@ -1,6 +1,6 @@
 package Modware::EventEmitter::Feature::Chado;
 {
-    $Modware::EventEmitter::Feature::Chado::VERSION = '1.0.0';
+  $Modware::EventEmitter::Feature::Chado::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -17,29 +17,28 @@ with 'Modware::Role::Loggable';
 # Module implementation
 #
 
-has_events
-    qw/write_meta_header write_header read_organism write_sequence_region/;
+has_events qw/write_meta_header write_header read_organism write_sequence_region/;
 has_events qw/read_reference read_seq_id write_reference/;
 has_events qw/read_feature read_subfeature write_feature write_subfeature/;
 
 has 'resource' => ( is => 'rw', isa => 'Bio::Chado::Schema', required => 1 );
 has 'response' => (
     is        => 'rw',
-    isa       => DbObject,
+    isa       => DbObject, 
     predicate => 'has_response',
-    traits    => [qw/ClearAfterAccess/]
+    traits => [qw/ClearAfterAccess/]
 );
 
 has 'response_id' => (
-    is     => 'rw',
-    isa    => 'Str',
+    is      => 'rw',
+    isa     => 'Str',
     traits => [qw/ClearAfterAccess/]
 );
 
 has 'msg' => ( is => 'rw', isa => 'Str' );
 
 sub process {
-    my ( $self, $log_level ) = @_;
+    my ($self, $log_level) = @_;
 
     $self->log_level($log_level) if $log_level;
     $self->use_extended_layout(1);
@@ -91,7 +90,7 @@ REFERENCE:
             $logger->debug('finished read_subfeature event');
 
             while ( my $sfrow = $rs2->next ) {
-                $logger->debug('write_subfeature event');
+               $logger->debug('write_subfeature event');
                 $self->emit(
                     'write_subfeature' => ( $seq_id, $frow, $sfrow ) );
             }

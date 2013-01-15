@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithValidationLogger;
 {
-    $Modware::Role::Command::WithValidationLogger::VERSION = '1.0.0';
+  $Modware::Role::Command::WithValidationLogger::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -21,11 +21,11 @@ has 'validation_logfile' => (
 );
 
 has 'validation_logger' => (
-    is        => 'rw',
-    isa       => 'Log::Dispatchouli',
-    predicate => 'has_validation_logger',
-    traits    => [qw/NoGetopt/],
-    builder   => '_build_valiation_logger'
+	is => 'rw', 
+	isa => 'Log::Dispatchouli', 
+	predicate => 'has_validation_logger', 
+	traits => [qw/NoGetopt/], 
+	builder => '_build_valiation_logger'
 );
 
 sub _build_validation_logger {

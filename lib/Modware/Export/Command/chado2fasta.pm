@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2fasta;
 {
-    $Modware::Export::Command::chado2fasta::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2fasta::VERSION = '1.0.0';
 }
 use strict;
 
@@ -138,8 +138,7 @@ override 'execute' => sub {
             "Could not find given organism  in chado database");
     }
 
-    my $type = $self->type;
-
+    my $type   = $self->type;
     # coderef for nuclear dumps only
     if ( $self->exclude_mitochondrial ) {
         my $source = $self->schema->source('Sequence::Feature');
@@ -424,7 +423,7 @@ sub dump_polypeptide_sequence {
     my $poly_rs = $rs->search_related(
         'feature_relationship_objects',
         { 'type_2.name' => 'derives_from' },
-        { join          => 'type' }
+        { join        => 'type' }
         )->search_related(
         'subject',
         { 'type_3.name' => 'polypeptide' },

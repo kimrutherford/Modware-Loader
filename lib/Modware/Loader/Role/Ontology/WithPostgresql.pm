@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::WithPostgresql;
 {
-    $Modware::Loader::Role::Ontology::WithPostgresql::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::WithPostgresql::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -27,14 +27,14 @@ sub handle_synonyms {
             }
         );
     }
-    return Modware::Loader::Response->new(
-        is_success => 1,
-        message    => 'Loaded all synonyms for ' . $node->id
+return Modware::Loader::Response->new(
+    	is_success => 1, 
+    	message => 'Loaded all synonyms for '. $node->id
     );
 
 }
 
-sub setup { }
+sub setup {}
 
 1;    # Magic true value required at end of module
 

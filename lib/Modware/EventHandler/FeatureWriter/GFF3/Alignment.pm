@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::Alignment;
 {
-    $Modware::EventHandler::FeatureWriter::GFF3::Alignment::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::Alignment::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -101,7 +101,7 @@ sub write_feature {
             { join        => 'type' }
         );
         for my $row ( $rs->all ) {
-            if ( $row->type->name ~~ [ $self->all_properties ] ) {
+            if ( $row->type->name ~~ [$self->all_properties] ) {
                 $hashref->{attributes}->{ $row->type->name }
                     = [ $row->value ];
             }

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty;
 {
-    $Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -65,12 +65,8 @@ sub read_transcript {
     }
     else {
         my $new_rs;
-        if (any {
-                $_->secondary_dbxrefs->first->accession eq
-                    'dictyBase Curator';
-            }
-            $trans_rs2->all
-            )
+        if ( any { $_->secondary_dbxrefs->first->accession eq 'dictyBase Curator' }
+            $trans_rs2->all )
         {
             $new_rs = $trans_rs->search(
                 {   'db.name'          => 'GFF_source',

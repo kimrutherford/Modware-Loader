@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::NonCanonical;
 {
-    $Modware::EventHandler::FeatureReader::Chado::NonCanonical::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::NonCanonical::VERSION = '1.0.0';
 }
 
 # Other modules:

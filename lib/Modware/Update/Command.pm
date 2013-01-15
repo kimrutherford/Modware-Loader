@@ -1,6 +1,6 @@
 package Modware::Update::Command;
 {
-    $Modware::Update::Command::VERSION = '1.0.0';
+  $Modware::Update::Command::VERSION = '1.0.0';
 }
 
 use strict;
@@ -130,10 +130,10 @@ has 'exist_count' => (
 );
 
 has 'chado' => (
-    is      => 'ro',
-    isa     => Schema,
-    traits  => [qw/NoGetopt/],
-    lazy    => 1,
+    is       => 'ro',
+    isa      => Schema,
+    traits   => [qw/NoGetopt/],
+    lazy     => 1,
     default => sub {
         my $self = shift;
         return Bio::Chado::Schema->connect(

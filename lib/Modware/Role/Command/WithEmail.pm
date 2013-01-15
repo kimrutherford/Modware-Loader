@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithEmail;
 {
-    $Modware::Role::Command::WithEmail::VERSION = '1.0.0';
+  $Modware::Role::Command::WithEmail::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -23,7 +23,7 @@ requires 'msg_appender';
 after 'execute' => sub {
     my ($self) = @_;
     if ( $self->send_email ) {
-        carp "Need *host* to send e-mail\n" if !$self->has_host;
+    	carp "Need *host* to send e-mail\n" if !$self->has_host;
         if ( $self->has_msg_appender ) {
             my $msg = $self->msg_appender->string;
             $self->robot_email($msg);
@@ -47,10 +47,9 @@ has 'send_email' => (
 );
 
 has 'host' => (
-    is  => 'rw',
-    isa => 'Str',
-    documentation =>
-        'SMTP host for sending e-mail,  required if *send_email* is set',
+    is            => 'rw',
+    isa           => 'Str',
+    documentation => 'SMTP host for sending e-mail,  required if *send_email* is set', 
     predicate => 'has_host'
 );
 

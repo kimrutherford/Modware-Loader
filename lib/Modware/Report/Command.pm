@@ -1,13 +1,15 @@
 package Modware::Report::Command;
 {
-    $Modware::Report::Command::VERSION = '1.0.0';
+  $Modware::Report::Command::VERSION = '1.0.0';
 }
+
 
 use namespace::autoclean;
 use Moose;
 extends qw/MooseX::App::Cmd::Command/;
 
 with 'Modware::Role::Command::WithOutputLogger';
+
 
 __PACKAGE__->meta->make_immutable;
 

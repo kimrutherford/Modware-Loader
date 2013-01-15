@@ -1,6 +1,6 @@
 package Modware::Loader::Ontology::Manager;
 {
-    $Modware::Loader::Ontology::Manager::VERSION = '1.0.0';
+  $Modware::Loader::Ontology::Manager::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -73,7 +73,7 @@ sub is_ontology_in_db {
 }
 
 sub delete_ontology {
-    my ( $self, $cvrow ) = @_;
+    my ($self, $cvrow)  = @_;
     my $cv_id   = $cvrow->cv_id;
     my $storage = $self->schema->storage;
 

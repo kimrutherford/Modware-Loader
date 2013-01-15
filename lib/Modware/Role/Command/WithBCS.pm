@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithBCS;
 {
-    $Modware::Role::Command::WithBCS::VERSION = '1.0.0';
+  $Modware::Role::Command::WithBCS::VERSION = '1.0.0';
 }
 
 use strict;

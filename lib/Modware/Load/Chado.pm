@@ -1,6 +1,6 @@
 package Modware::Load::Chado;
 {
-    $Modware::Load::Chado::VERSION = '1.0.0';
+  $Modware::Load::Chado::VERSION = '1.0.0';
 }
 
 use strict;

@@ -1,6 +1,6 @@
 package Modware::Role::Command::Convert::Resource::goref;
 {
-    $Modware::Role::Command::Convert::Resource::goref::VERSION = '1.0.0';
+  $Modware::Role::Command::Convert::Resource::goref::VERSION = '1.0.0';
 }
 
 # Other modules:

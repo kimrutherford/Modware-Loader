@@ -1,6 +1,6 @@
 package Modware::Loader::Ontology;
 {
-    $Modware::Loader::Ontology::VERSION = '1.0.0';
+  $Modware::Loader::Ontology::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -98,7 +98,7 @@ sub _load_engine {
         . ucfirst lc( $schema->storage->sqlt_type );
     my $tmp_engine = 'Modware::Loader::Role::Ontology::Temp::With'
         . ucfirst lc( $schema->storage->sqlt_type );
-    ensure_all_roles( $self, ( $engine, $tmp_engine ) );
+    ensure_all_roles( $self, ($engine, $tmp_engine) );
 
     $self->meta->make_immutable;
     $self->transform_schema($schema);
@@ -262,13 +262,13 @@ sub merge_ontology {
 }
 
 sub finish {
-    my ($self) = @_;
-    $self->schema->storage->disconnect;
+	my ($self) = @_;
+	$self->schema->storage->disconnect;
 }
 
 sub entries_in_staging {
-    my ( $self, $resultset_class ) = @_;
-    return $self->schema->resultset($resultset_class)->count( {} );
+	my ($self, $resultset_class) = @_;
+	return $self->schema->resultset($resultset_class)->count({});
 }
 
 with 'Modware::Loader::Role::Ontology::WithHelper';

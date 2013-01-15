@@ -1,7 +1,8 @@
 package Modware::Generator::Command;
 {
-    $Modware::Generator::Command::VERSION = '1.0.0';
+  $Modware::Generator::Command::VERSION = '1.0.0';
 }
+
 
 # Other modules:
 use namespace::autoclean;
@@ -13,6 +14,9 @@ extends qw/MooseX::App::Cmd::Command/;
 with 'Modware::Role::Command::WithOutputLogger';
 
 __PACKAGE__->meta->make_immutable;
+
+
+
 
 1;    # Magic true value required at end of module
 

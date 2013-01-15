@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithIO;
 {
-    $Modware::Role::Command::WithIO::VERSION = '1.0.0';
+  $Modware::Role::Command::WithIO::VERSION = '1.0.0';
 }
 
 use strict;
@@ -57,14 +57,14 @@ has 'input_handler' => (
     lazy    => 1,
     default => sub {
         my ($self) = @_;
-        if ( $self->has_input ) {
-            return $self->input->openr;
+        if ($self->has_input) {
+        	return $self->input->openr;
         }
         else {
-            if ( -t STDIN ) {
-                warn "**Cannot read from STDIN**\n";
-                $self->usage->die;
-            }
+        	if (-t STDIN) {
+        		warn "**Cannot read from STDIN**\n";
+        	    $self->usage->die;
+        	}
             return IO::Handle->new_from_fd( fileno(STDIN), 'r' );
         }
     }

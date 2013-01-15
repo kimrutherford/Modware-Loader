@@ -1,13 +1,15 @@
 package Modware::Filter::Command;
 {
-    $Modware::Filter::Command::VERSION = '1.0.0';
+  $Modware::Filter::Command::VERSION = '1.0.0';
 }
+
 
 use namespace::autoclean;
 use Moose;
 extends qw/MooseX::App::Cmd::Command/;
 with 'Modware::Role::Command::WithOutputLogger';
 with 'Modware::Role::Command::WithIO';
+
 
 __PACKAGE__->meta->make_immutable;
 

@@ -1,6 +1,6 @@
 package Modware::Fetch;
 {
-    $Modware::Fetch::VERSION = '1.0.0';
+  $Modware::Fetch::VERSION = '1.0.0';
 }
 use strict;
 

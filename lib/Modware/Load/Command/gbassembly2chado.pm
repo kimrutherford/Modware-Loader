@@ -1,6 +1,6 @@
 package Modware::Load::Command::gbassembly2chado;
 {
-    $Modware::Load::Command::gbassembly2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::gbassembly2chado::VERSION = '1.0.0';
 }
 
 use strict;
@@ -70,7 +70,7 @@ sub execute {
     $loader->transform_schema;
     $loader->id_prefix( $self->prefix ) if $self->has_id_prefix;
     $loader->reference_type( $self->reference_type );
-    $loader->input( $self->input_handler );
+    $loader->input($self->input_handler);
 
 ## -- loading in database inside one transaction
     my $guard = $schema->txn_scope_guard;

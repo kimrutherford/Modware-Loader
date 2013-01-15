@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Chado::WithPostgresql;
 {
-    $Modware::Loader::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -15,11 +15,12 @@ has cache_threshold =>
 
 sub transform_schema { }
 
+
 before 'merge_ontology' => sub {
     my ($self) = @_;
     $self->schema->storage->dbh_do(
         sub {
-            my ( $storage, $dbh ) = @_;
+            my ($storage, $dbh) = @_;
             $dbh->do(
                 qq{
 	           CREATE TEMPORARY TABLE temp_accession (
@@ -151,9 +152,8 @@ sub update_cvterm_names {
     	) AS fresh
     	WHERE fresh.fname != fresh.oname
     	AND cvterm.cvterm_id = fresh.cvterm_id
-    }
-    );
-    return $row;
+    });
+    return  $row;
 }
 
 sub update_cvterms {
@@ -171,9 +171,8 @@ sub update_cvterms {
     		 	dbxref.db_id = tmcv.db_id
     		 ) ) AS fresh
     		WHERE cvterm.cvterm_id = fresh.cvterm_id
-    }
-    );
-    return $row;
+    });
+    return  $row;
 }
 
 sub merge_comments {

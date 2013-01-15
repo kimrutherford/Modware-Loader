@@ -1,6 +1,6 @@
 package Modware::Role::Command::Convert::Identifier;
 {
-    $Modware::Role::Command::Convert::Identifier::VERSION = '1.0.0';
+  $Modware::Role::Command::Convert::Identifier::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -11,12 +11,13 @@ use Carp;
 # Module implementation
 #
 
-requires 'is_present', 'translate';
+
+requires 'is_present',  'translate';
 
 sub convert {
-    my ( $self, $id ) = @_;
-    return if !$self->is_present($id);
-    return $self->translate($id);
+	my ($self, $id) = @_;
+	return if !$self->is_present($id);
+	return $self->translate($id);
 }
 
 1;    # Magic true value required at end of module

@@ -1,7 +1,8 @@
 package Modware::Transform::Command;
 {
-    $Modware::Transform::Command::VERSION = '1.0.0';
+  $Modware::Transform::Command::VERSION = '1.0.0';
 }
+
 
 # Other modules:
 use namespace::autoclean;
@@ -15,18 +16,21 @@ with 'MooseX::ConfigFromFile';
 with 'Modware::Role::Command::WithIO';
 with 'Modware::Role::Command::WithLogger';
 
+
 has '+configfile' => (
     cmd_aliases   => 'c',
-    traits        => [qw/Getopt/],
+    traits        => [qw/Getopt/], 
     documentation => 'yaml config file to specify all command line options'
 );
 
 __PACKAGE__->meta->make_immutable;
 
+
 sub get_config_from_file {
     my ( $self, $file ) = @_;
     return LoadFile($file);
 }
+
 
 1;    # Magic true value required at end of module
 

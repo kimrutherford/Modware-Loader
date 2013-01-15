@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithReportLogger;
 {
-    $Modware::Role::Command::WithReportLogger::VERSION = '1.0.0';
+  $Modware::Role::Command::WithReportLogger::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -14,10 +14,10 @@ use POSIX qw/strftime/;
 #
 
 has 'verbose' => (
-    is            => 'rw',
-    isa           => 'Bool',
-    default       => 0,
-    documentation => 'Output logging message,default is false'
+	is => 'rw', 
+	isa => 'Bool', 
+	default => 0, 
+	documentation => 'Output logging message,default is false'
 );
 
 has 'logfile' => (
@@ -45,7 +45,7 @@ sub _build_logger {
         = $self->has_logfile and $self->can('logfile')
         ? $self->logfile
         : undef;
-    if ($logfile) {
+   if ($logfile) {
         my $t = Time::Piece->new;
         $options->{to_file}  = 1;
         $options->{log_file} = $logfile;
@@ -54,19 +54,19 @@ sub _build_logger {
         $options->{to_stderr} = 1;
     }
 
+    
     my $logger = Log::Dispatchouli->new($options);
-    $logger->set_prefix(
-        sub {
-            my ($msg) = @_;
-            my $time = strftime "%m-%d-%Y %H:%M:%S", localtime;
-            return sprintf "[%s]:\t%s", $time, $msg;
-        }
-    );
-    if ( !$self->verbose ) {
-        $logger->set_muted(1);
+    $logger->set_prefix(sub {
+    	my ($msg) = @_;
+    	my $time = strftime "%m-%d-%Y %H:%M:%S",  localtime;
+    	return sprintf "[%s]:\t%s", $time, $msg;
+    });
+    if (!$self->verbose) {
+    	$logger->set_muted(1);
     }
     return $logger;
 }
+
 
 1;    # Magic true value required at end of module
 

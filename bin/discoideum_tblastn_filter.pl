@@ -2,7 +2,7 @@
 
 package discoideum::tblastn;
 {
-    $discoideum::tblastn::VERSION = '1.0.0';
+  $discoideum::tblastn::VERSION = '1.0.0';
 }
 use strict;
 use Getopt::Long::Descriptive;
@@ -37,9 +37,10 @@ for my $genome ( @{ $opt->genomes } ) {
         = catfile( $opt->input_folder, $genome, 'discoideum_tblastn.xml' );
     die "$input do not exist !!!!!\n" if !-e $input;
 
-    my $outfolder = catdir( $opt->output_folder, $genome );
+    my $outfolder = catdir($opt->output_folder, $genome);
     die "$outfolder do not exist !!!!\n" if !-e $outfolder;
-    my $output = catfile( $outfolder, 'discoideum_tblastn.gff3' );
+    my $output
+        = catfile( $outfolder, 'discoideum_tblastn.gff3' );
 
     push @$cmdlines,
         [
@@ -57,20 +58,19 @@ for my $genome ( @{ $opt->genomes } ) {
 
 #make all child
 my @child;
-for my $arg (@$cmdlines) {
-    push @child, Child->new(
-        sub {
-            my $cmd = Modware::Transform->new;
-            local @ARGV = @$arg;
-            $cmd->run;
-        }
-    );
+for my $arg(@$cmdlines) {
+	push @child, Child->new(sub {
+		my $cmd = Modware::Transform->new;
+		local @ARGV = @$arg;
+		$cmd->run;
+	});
 }
 
+
 #fork and run
-for my $children (@child) {
-    my $proc = $children->start;
-    warn "starting children ", $proc->pid, "\n";
+for my $children(@child) {
+	my $proc = $children->start;
+	warn "starting children ", $proc->pid, "\n";
 }
 
 Child->wait_all;

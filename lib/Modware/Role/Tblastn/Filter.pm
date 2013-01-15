@@ -1,6 +1,6 @@
 package Modware::Role::Tblastn::Filter;
 {
-    $Modware::Role::Tblastn::Filter::VERSION = '1.0.0';
+  $Modware::Role::Tblastn::Filter::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -96,7 +96,7 @@ HIT:
                 $plus_hit->add_hsp($hsp);
             }
         }
-        $new_result->add_hit($plus_hit)  if $plus_hit->num_hsps =~ /^\d+$/;
+        $new_result->add_hit($plus_hit)  if $plus_hit->num_hsps  =~ /^\d+$/;
         $new_result->add_hit($minus_hit) if $minus_hit->num_hsps =~ /^\d+$/;
 
         $self->inc_global_hit_count;
@@ -120,7 +120,7 @@ HIT:
             for my $frame ( 1 .. 3 ) {
                 my $context = $strand . $frame;
                 my $hit     = Bio::Search::Hit::GenericHit->new(
-                    -name => $hname . '-'
+                    -name => $hname . '-' 
                         . $context . '.'
                         . $self->global_hit_counter,
                     -accession => $hacc,
@@ -247,7 +247,7 @@ sub has_stop_codon {
             return 1;
         }
     }
-    return;
+    return ;
 }
 
 1;    # Magic true value required at end of module

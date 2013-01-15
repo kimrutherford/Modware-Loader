@@ -1,6 +1,6 @@
 package Modware::Meta::Attribute::Trait::ClearAfterAccess;
 {
-    $Modware::Meta::Attribute::Trait::ClearAfterAccess::VERSION = '1.0.0';
+  $Modware::Meta::Attribute::Trait::ClearAfterAccess::VERSION = '1.0.0';
 }
 
 use Moose::Role;
@@ -14,14 +14,12 @@ after install_accessors => sub {
     my ($self) = @_;
     return if !$self->applied_traits;
 
-    if ( first { $_ eq 'Modware::Meta::Attribute::Trait::ClearAfterAccess' }
-        @{ $self->applied_traits } )
-    {
+    if ( first { $_ eq 'Modware::Meta::Attribute::Trait::ClearAfterAccess' } @{ $self->applied_traits } ) {
         my $name = $self->name;
         $self->associated_class->add_after_method_modifier(
             $name,
             sub {
-                my ( $self, $value ) = @_;
+                my ($self, $value) = @_;
                 return if $value;
                 my $att = $self->meta->find_attribute_by_name($name);
                 $att->clear_value($self);

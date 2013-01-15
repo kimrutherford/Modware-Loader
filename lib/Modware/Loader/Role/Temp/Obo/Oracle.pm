@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Temp::Obo::WithOracle;
 {
-    $Modware::Loader::Role::Temp::Obo::WithOracle::VERSION = '1.0.0';
+  $Modware::Loader::Role::Temp::Obo::WithOracle::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -16,13 +16,13 @@ has 'on_connect_sql' => (
     isa        => 'ArrayRef',
     auto_deref => 1,
     default    => sub {
-        my $self = shift;
-        my $sql;
-        push @$sql, <<SEQ;
+    	my $self = shift;
+    	my $sql;
+        push @$sql,<<SEQ;
 CREATE SEQUENCE sq_tmpobo_tmpobo_id
 SEQ
 
-        push @$sql, <<SQL;
+    	push @$sql, <<SQL;
 CREATE GLOBAL TEMPORARY TABLE tmpobo(
 tmpobo_id NUMBER(11, 0) NOT NULL, 
 name VARCHAR2(1024) NOT NULL, 
@@ -36,7 +36,8 @@ PRIMARY KEY(tmpobo_id)
 ON COMMIT PRESERVE ROWS
 SQL
 
-        push @$sql, <<TGR;
+
+         push @$sql,<<TGR;
 CREATE OR REPLACE TRIGGER ai_tmpobo_tmpobo_id
 BEFORE INSERT ON tmp
 FOR EACH ROW WHEN (
@@ -49,7 +50,7 @@ BEGIN
 END
 TGR
 
-        return $sql;
+		return $sql;
     }
 );
 
@@ -58,12 +59,12 @@ has 'on_disconnect_sql' => (
     isa        => 'ArrayRef',
     auto_deref => 1,
     default    => sub {
-        my $self = shift;
-        return [
-            qq{DROP SEQUENCE sq_tmpobo_tmpobo_id},
-            qq{TRUNCATE TABLE tmpobo},
-            qq{DROP TABLE tmpobo CASCADE}
-        ];
+    	my $self = shift;
+    	return [
+    		qq{DROP SEQUENCE sq_tmpobo_tmpobo_id}, 
+    		qq{TRUNCATE TABLE tmpobo}, 
+    		qq{DROP TABLE tmpobo CASCADE}
+    	];
     }
 );
 

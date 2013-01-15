@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3;
 {
-    $Modware::EventHandler::FeatureWriter::GFF3::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -14,6 +14,7 @@ has 'output' => (
     is  => 'rw',
     isa => 'IO::Handle'
 );
+
 
 sub write_header {
     my ( $self, $event ) = @_;

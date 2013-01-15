@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Temp::WithOracle;
 {
-    $Modware::Loader::Role::Ontology::Temp::WithOracle::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Temp::WithOracle::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -28,7 +28,7 @@ around 'load_cvterms_in_staging' => sub {
 };
 
 after 'load_cvterms_in_staging' => sub {
-    my ($self) = @_;
+	my ($self) = @_;
     $self->load_cache( 'synonym', 'TempCvtermsynonym' );
 };
 
@@ -60,8 +60,7 @@ sub create_temp_statements {
     ) ON COMMIT PRESERVE ROWS }
     );
 
-    $storage->dbh->do(
-        qq{
+   $storage->dbh->do(qq{
 	        CREATE GLOBAL TEMPORARY TABLE temp_cvterm_synonym (
                accession varchar2(256) NOT NULL, 
                syn varchar2(1024) NOT NULL, 

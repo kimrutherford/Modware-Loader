@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithOutputLogger;
 {
-    $Modware::Role::Command::WithOutputLogger::VERSION = '1.0.0';
+  $Modware::Role::Command::WithOutputLogger::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -21,11 +21,11 @@ has 'extended_logger_layout' => (
     is      => 'ro',
     isa     => 'Str',
     traits  => [qw/NoGetopt/],
-    default => '[%d{MM-dd-yyyy hh:mm:ss}] %p > %F{1}:%L - %m%n',
-    lazy    => 1
+    default => '[%d{MM-dd-yyyy hh:mm:ss}] %p > %F{1}:%L - %m%n', 
+    lazy => 1
 );
 
-has 'use_extended_layout' => ( is => 'rw', isa => 'Bool', default => 0 );
+has 'use_extended_layout' => ( is => 'rw',  isa => 'Bool',  default => 0);
 
 has 'output_logger' => (
     is         => 'rw',
@@ -35,13 +35,13 @@ has 'output_logger' => (
 );
 
 has 'logger' => (
-    is      => 'ro',
-    isa     => 'Log::Log4perl::Logger',
-    traits  => [qw/NoGetopt/],
-    lazy    => 1,
+    is         => 'ro',
+    isa        => 'Log::Log4perl::Logger',
+    traits     => [qw/NoGetopt/],
+    lazy => 1,
     default => sub {
-        my ($self) = @_;
-        return $self->output_logger;
+    	my ($self) = @_;
+    	return $self->output_logger;
     }
 );
 
@@ -61,12 +61,10 @@ sub _build_output_logger {
         'Log::Log4perl::Appender::ScreenColoredLevels',
         'stderr' => 1 );
 
-    my $layout
-        = $self->use_extended_layout
-        ? Log::Log4perl::Layout::PatternLayout->new(
-        $self->extended_logger_layout )
-        : Log::Log4perl::Layout::SimpleLayout->new;
-    $appender->layout($layout);
+    my $layout = $self->use_extended_layout ? Log::Log4perl::Layout::PatternLayout->new(
+    	$self->extended_logger_layout
+    ): Log::Log4perl::Layout::SimpleLayout->new;
+    $appender->layout( $layout);
 
     my $log = Log::Log4perl->get_logger(__PACKAGE__);
     $log->add_appender($appender);

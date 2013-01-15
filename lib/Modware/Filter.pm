@@ -1,7 +1,8 @@
 package Modware::Filter;
 {
-    $Modware::Filter::VERSION = '1.0.0';
+  $Modware::Filter::VERSION = '1.0.0';
 }
+
 
 #Other modules
 use Moose;

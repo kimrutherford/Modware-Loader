@@ -1,6 +1,6 @@
 package Modware::Export::Command::dictygaf;
 {
-    $Modware::Export::Command::dictygaf::VERSION = '1.0.0';
+  $Modware::Export::Command::dictygaf::VERSION = '1.0.0';
 }
 use strict;
 
@@ -19,6 +19,7 @@ with 'Modware::Role::Command::WithEmail';
 has '+input'          => ( traits => [qw/NoGetopt/] );
 has '+data_dir'       => ( traits => [qw/NoGetopt/] );
 has '+output_handler' => ( traits => [qw/NoGetopt/] );
+
 
 has '+source_url' => (
     default => 'www.dictybase.org',

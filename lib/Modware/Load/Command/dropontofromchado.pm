@@ -1,6 +1,6 @@
 package Modware::Load::Command::dropontofromchado;
 {
-    $Modware::Load::Command::dropontofromchado::VERSION = '1.0.0';
+  $Modware::Load::Command::dropontofromchado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;
@@ -36,8 +36,8 @@ has 'partial_lookup' => (
 );
 
 sub execute {
-    my ($self)  = @_;
-    my $logger  = $self->logger;
+    my ($self) = @_;
+    my $logger = $self->logger;
     my $manager = Modware::Loader::Ontology::Manager->new;
 
     $manager->set_logger($logger);
@@ -49,16 +49,15 @@ sub execute {
 NAME:
     for my $name ( @{ $self->namespace } ) {
 
-        my $cvrow
-            = $manager->is_ontology_in_db( $name, $self->partial_lookup );
-        if ( !$cvrow ) {
+        my $cvrow = $manager->is_ontology_in_db( $name, $self->partial_lookup );
+        if (!$cvrow) {
             $logger->error("This ontology do not exist in database");
             next NAME;
         }
 
         #enable transaction
 
-        my $actual_name = $cvrow->name;
+		my $actual_name = $cvrow->name;
         $logger->info("start deleting ontology $actual_name");
         $manager->delete_ontology($cvrow);
         $logger->info("deleted ontology $actual_name");

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::Overlapping;
 {
-    $Modware::EventHandler::FeatureReader::Chado::Overlapping::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::Overlapping::VERSION = '1.0.0';
 }
 
 # Other modules:

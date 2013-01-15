@@ -1,6 +1,6 @@
 package Modware::Role::WithDataStash;
 {
-    $Modware::Role::WithDataStash::VERSION = '1.0.0';
+  $Modware::Role::WithDataStash::VERSION = '1.0.0';
 }
 
 # Other modules:

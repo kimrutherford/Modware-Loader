@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithInput;
 {
-    $Modware::Role::Command::WithInput::VERSION = '1.0.0';
+  $Modware::Role::Command::WithInput::VERSION = '1.0.0';
 }
 
 use strict;
@@ -15,10 +15,10 @@ use Modware::Load::Types qw/FileObject/;
 #
 
 has 'input' => (
-    is            => 'rw',
-    isa           => FileObject,
-    traits        => [qw/Getopt/],
-    cmd_aliases   => 'i',
+    is          => 'rw',
+    isa         => FileObject,
+    traits      => [qw/Getopt/],
+    cmd_aliases => 'i',
     coerce        => 1,
     predicate     => 'has_input',
     documentation => 'Name of the input file, if absent reads from STDIN'

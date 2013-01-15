@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictynoncanonicalgff3;
 {
-    $Modware::Export::Command::chado2dictynoncanonicalgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictynoncanonicalgff3::VERSION = '1.0.0';
 }
 
 use strict;
@@ -44,12 +44,11 @@ has 'write_sequence_region' => (
 );
 
 has 'source' => (
-    is      => 'rw',
-    isa     => 'Str',
-    lazy    => 1,
-    default => 'Sequencing Center',
-    documentation =>
-        'Name of database/piece of software/algorithm that generated the gene models. By default it is *Sequencing Center*.'
+	is => 'rw', 
+	isa => 'Str', 
+	lazy => 1, 
+	default => 'Sequencing Center', 
+	documentation => 'Name of database/piece of software/algorithm that generated the gene models. By default it is *Sequencing Center*.'
 );
 
 sub execute {
@@ -57,13 +56,13 @@ sub execute {
     my $read_handler
         = Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty->new(
         reference_type => 'chromosome',
-        common_name    => 'dicty',
-        source         => $self->source
+        common_name    => 'dicty', 
+        source => $self->source
         );
 
     my $write_handler
-        = Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty
-        ->new( output => $self->output_handler );
+        = Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty->new(
+        output => $self->output_handler );
 
     my $source = $self->schema->source('Sequence::Feature');
     $source->remove_column('is_obsolete');

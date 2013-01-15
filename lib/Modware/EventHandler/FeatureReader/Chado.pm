@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado;
 {
-    $Modware::EventHandler::FeatureReader::Chado::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -56,7 +56,7 @@ sub read_reference {
     my $reference_rs = $dbrow->search_related(
         'features',
         { 'type.name' => $self->reference_type },
-        {   join => 'type',
+        {   join     => 'type',
             '+select' =>
                 [ { LENGTH => 'me.residues', -as => 'sequence_length' } ],
             cache => 1

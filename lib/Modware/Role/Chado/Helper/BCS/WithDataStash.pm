@@ -1,6 +1,6 @@
 package Modware::Role::Chado::Helper::BCS::WithDataStash;
 {
-    $Modware::Role::Chado::Helper::BCS::WithDataStash::VERSION = '1.0.0';
+  $Modware::Role::Chado::Helper::BCS::WithDataStash::VERSION = '1.0.0';
 }
 
 # Other modules:

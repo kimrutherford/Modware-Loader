@@ -1,6 +1,6 @@
 package Modware::Loader;
 {
-    $Modware::Loader::VERSION = '1.0.0';
+  $Modware::Loader::VERSION = '1.0.0';
 }
 
 1;

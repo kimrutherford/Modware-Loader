@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Temp::Obo::WithPg;
 {
-    $Modware::Loader::Role::Temp::Obo::WithPg::VERSION = '1.0.0';
+  $Modware::Loader::Role::Temp::Obo::WithPg::VERSION = '1.0.0';
 }
 
 # Other modules:

@@ -1,6 +1,6 @@
 package Modware::EventHandler::Shared;
 {
-    $Modware::EventHandler::Shared::VERSION = '1.0.0';
+  $Modware::EventHandler::Shared::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -11,10 +11,10 @@ use Moose;
 #
 
 has 'data' => (
-    is        => 'rw',
-    isa       => 'Object',
-    predicate => 'has_data',
-    clearer   => 'clear_data'
+	is => 'rw', 
+	isa => 'Object', 
+	predicate => 'has_data', 
+	clearer => 'clear_data'
 );
 
 1;    # Magic true value required at end of module

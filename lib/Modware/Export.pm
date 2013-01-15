@@ -1,6 +1,6 @@
 package Modware::Export;
 {
-    $Modware::Export::VERSION = '1.0.0';
+  $Modware::Export::VERSION = '1.0.0';
 }
 use strict;
 

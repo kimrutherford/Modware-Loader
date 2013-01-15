@@ -1,6 +1,6 @@
 package Modware::Update::Command::oboinchado;
 {
-    $Modware::Update::Command::oboinchado::VERSION = '1.0.0';
+  $Modware::Update::Command::oboinchado::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -287,8 +287,7 @@ NODE:
             if ( $type eq 'relations' ) {
                 for my $prop ( $self->relation_attributes ) {
                     $self->add_rel_attr(
-                        [   $label, 1,
-                            $self->get_cvterm_row($prop)->cvterm_id
+                        [   $label, 1, $self->get_cvterm_row($prop)->cvterm_id
                         ]
                     ) if $node->$prop;
                 }

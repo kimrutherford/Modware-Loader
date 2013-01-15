@@ -1,6 +1,6 @@
 package Modware::Load::Command::gb2chado;
 {
-    $Modware::Load::Command::gb2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::gb2chado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;
@@ -12,9 +12,9 @@ use Modware::Loader::Genome::GenBank;
 extends qw/Modware::Load::Chado/;
 
 has 'prefix' => (
-    is        => 'rw',
-    isa       => 'Str',
-    predicate => 'has_prefix',
+    is  => 'rw',
+    isa => 'Str',
+    predicate => 'has_prefix', 
     documentation =>
         'id prefix to use for generating feature identifiers,  default is the first letter of genus and first two letters of species name'
 );
@@ -57,7 +57,7 @@ has 'genome_tag' => (
 has 'link_publication' => (
     is        => 'rw',
     isa       => 'Str',
-    predicate => 'link_to_publication',
+    predicate => 'link_to_publication', 
     documentation =>
         'Link literature reference to the features,  needs a publication id'
 );
@@ -74,25 +74,25 @@ sub execute {
     my ($self) = @_;
 
 ## -- setting log
-    my $logger = $self->logger;
-    $logger->logdie("no input genbank file is given")
-        if !$self->input_handler->opened;
+    my $logger
+        = $self->logger;
+    $logger->logdie("no input genbank file is given") if !$self->input_handler->opened;
 
 ## -- genome loader
     my $loader = Modware::Loader::Genome::GenBank->new;
     $loader->logger($logger);
-    $loader->schema( $self->schema );
+    $loader->schema($self->schema);
     $loader->transform_schema;
 
-    $loader->id_prefix( $self->prefix ) if $self->has_prefix;
-    $loader->reference_type( $self->reference_type );
+    $loader->id_prefix($self->prefix) if $self->has_prefix;
+    $loader->reference_type($self->reference_type);
     $loader->input( $self->input_handler );
 
 ## -- loading in database inside one transaction
     my $guard = $self->schema->txn_scope_guard;
 
 ## -- sets up database sources
-    $loader->mod_source( $self->dbsource );
+    $loader->mod_source($self->dbsource);
 
     # - for gmod bulk loader compat
     # - sets the Genbank source as dbxref accession with GFF_source as db.
@@ -105,9 +105,9 @@ sub execute {
     $loader->add_genome_tag if $self->genome_tag;
 
 ## -- link literature to feature if any
-    if ( $self->link_to_publication ) {
+    if ($self->link_to_publication) {
         $loader->add_feat2link($_) for $self->feat2link;
-        $loader->linkfeat2pub( $self->link_publication );
+        $loader->linkfeat2pub($self->link_publication);
     }
     $guard->commit;
 }

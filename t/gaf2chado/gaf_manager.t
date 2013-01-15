@@ -24,10 +24,9 @@ describe 'A GAF manager' => sub {
     it 'should have method' => sub {
         can_ok( $gaf_manager, $_ ) for qw/parse get_gene_ids/;
     };
-
-    #it 'parse should return an array' => sub {
-    #    isa_ok( @annotations, 'Array' );
-    #};
+	#it 'parse should return an array' => sub {
+	#    isa_ok( @annotations, 'Array' );
+	#};
     it 'elements in array returned by parser should be of type Annotation' =>
         sub {
         isa_ok( $annotations[0], 'Annotation' );

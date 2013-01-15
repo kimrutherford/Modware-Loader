@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Chado::WithOracle;
 {
-    $Modware::Loader::Role::Ontology::Chado::WithOracle::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Chado::WithOracle::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -15,7 +15,7 @@ after 'merge_ontology' => sub {
     my ($self) = @_;
     $self->schema->storage->dbh_do(
         sub {
-            my ( $storage, $dbh ) = @_;
+            my ($storage, $dbh) = @_;
             $dbh->do(qq{TRUNCATE TABLE temp_accession});
             $dbh->do(qq{TRUNCATE TABLE temp_term_delete});
             $dbh->do(qq{TRUNCATE TABLE temp_synonym_update});
@@ -25,6 +25,7 @@ after 'merge_ontology' => sub {
         }
     );
 };
+
 
 around 'merge_ontology' => sub {
     my $orig = shift;

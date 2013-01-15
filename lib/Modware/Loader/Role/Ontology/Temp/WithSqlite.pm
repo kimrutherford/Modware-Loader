@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Temp::WithSqlite;
 {
-    $Modware::Loader::Role::Ontology::Temp::WithSqlite::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Temp::WithSqlite::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -39,7 +39,7 @@ around 'load_cvterms_in_staging' => sub {
 };
 
 after 'load_cvterms_in_staging' => sub {
-    my ($self) = @_;
+	my ($self) = @_;
     $self->load_cache( 'synonym', 'TempCvtermsynonym' );
 };
 

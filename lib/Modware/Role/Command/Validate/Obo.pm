@@ -1,7 +1,9 @@
 package Modware::Role::Command::Validate::Obo;
 {
-    $Modware::Role::Command::Validate::Obo::VERSION = '1.0.0';
+  $Modware::Role::Command::Validate::Obo::VERSION = '1.0.0';
 }
+
+
 
 # Other modules:
 use strict;
@@ -13,8 +15,8 @@ with 'Modware::Role::Command::WithValidationLogger';
 requires 'schema';
 
 sub validate_data {
-    my ( $self, $node ) = @_;
-    return;
+	my ($self, $node) = @_;
+	return;
 }
 
 # Module implementation

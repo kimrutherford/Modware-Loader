@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithLogger;
 {
-    $Modware::Role::Command::WithLogger::VERSION = '1.0.0';
+  $Modware::Role::Command::WithLogger::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -46,7 +46,7 @@ has 'msg_appender' => (
 
 has 'log_level' => (
     is            => 'rw',
-    isa           => 'Str',
+    isa           => 'Str', 
     lazy          => 1,
     default       => 'error',
     documentation => 'Log level of the logger,  default is error'
@@ -56,16 +56,16 @@ has 'logger_format' => (
     is      => 'ro',
     isa     => 'Str',
     traits  => [qw/NoGetopt/],
-    default => '%m%n',
-    lazy    => 1
+    default => '%m%n', 
+    lazy => 1
 );
 
 has 'extended_logger_format' => (
     is      => 'ro',
     isa     => 'Str',
     traits  => [qw/NoGetopt/],
-    default => '[%d{MM-dd-yyyy hh:mm}] %p > %F{1}:%L - %m%n',
-    lazy    => 1
+    default => '[%d{MM-dd-yyyy hh:mm}] %p > %F{1}:%L - %m%n', 
+    lazy => 1
 );
 
 sub dual_logger {
@@ -100,8 +100,7 @@ sub fetch_dual_logger {
             );
     }
     $self->log_appender($appender);
-    my $layout
-        = Log::Log4perl::Layout::PatternLayout->new( $self->logger_format );
+    my $layout = Log::Log4perl::Layout::PatternLayout->new($self->logger_format);
 
     my $log = Log::Log4perl->get_logger(__PACKAGE__);
     $appender->layout($layout);

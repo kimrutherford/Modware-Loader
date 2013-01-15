@@ -1,6 +1,6 @@
 package Modware::Transform::Command::blast2chadogff3;
 {
-    $Modware::Transform::Command::blast2chadogff3::VERSION = '1.0.0';
+  $Modware::Transform::Command::blast2chadogff3::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -37,11 +37,10 @@ has 'format' => (
 );
 
 has 'group' => (
-    is      => 'rw',
-    isa     => 'Bool',
-    default => 1,
-    documentation =>
-        'Generate a GFF3 line to group the HSP(s),default is true. For
+    is            => 'rw',
+    isa           => 'Bool',
+    default       => 1,
+    documentation => 'Generate a GFF3 line to group the HSP(s),default is true. For
                       tblastn hsps are grouped separately if they align to different
                       strand and/or if they are overlapping'
 );
@@ -238,7 +237,7 @@ RESULT:
         while ( my $hit = $result->next_hit ) {
             next HIT
                 if $self->has_cutoff
-                and ( $hit->significance > $self->cutoff );
+                    and ( $hit->significance > $self->cutoff );
 
             my $hname
                 = $self->hit_id_parser
@@ -276,8 +275,7 @@ RESULT:
                 if ( $self->group ) {
                     $gff_acc
                         = $qname . '.match' . $self->get_id_count($qname);
-                    $self->set_id_count( $qname,
-                        $self->get_id_count($qname) + 1 );
+                    $self->set_id_count( $qname, $self->get_id_count($qname) + 1 );
 
                     my $gend;
                     if ( $inner->member_count == 1 ) {
@@ -370,20 +368,20 @@ sub non_overlapping {
             }
         }
 
-# sort all hsp(with intervals) by their start
-# pairwise comparison of each hsp
-# for each comparison generate a hash of overlap by the index position of hsp in
-# the array
-# Then generate non-overlap which are absent in overlap
-# Lastly,  prune all non-overlap entries which are overlap hash. This might happen
-# because earlier comparison might pick up non-overlap which might overlap in
-# later comparison.
-# Caveats (might need to solve later on)
-# * It finds one group of non-overlapping entries. The rest are overlapping and
-#   treated as individual entities.
-# * All entries are split into individual entity if it finds more than one
-#   non-overlapping groups. It might happend because a single group will be
-#   overlapping.
+		# sort all hsp(with intervals) by their start
+		# pairwise comparison of each hsp
+		# for each comparison generate a hash of overlap by the index position of hsp in
+		# the array
+		# Then generate non-overlap which are absent in overlap
+		# Lastly,  prune all non-overlap entries which are overlap hash. This might happen
+		# because earlier comparison might pick up non-overlap which might overlap in
+		# later comparison. 
+		# Caveats (might need to solve later on)
+		# * It finds one group of non-overlapping entries. The rest are overlapping and
+		#   treated as individual entities.
+		# * All entries are split into individual entity if it finds more than one
+		#   non-overlapping groups. It might happend because a single group will be
+		#   overlapping.
         else {
             my $sorted = [ sort { $a->start('hit') <=> $b->start('hit') }
                     @$hsp_array ];
@@ -415,7 +413,6 @@ sub non_overlapping {
             }
 
             my $container = Modware::Iterator::Array->new;
-
             # ovarlapping
             for my $k ( keys %$non_overlap_idx ) {
                 $container->add( $sorted->[$k] );
@@ -442,7 +439,7 @@ sub non_overlapping {
 
 sub _get_uniq_others {
     my ( $self, $hofarray, $skip_idx ) = @_;
-    my @keys     = grep     { $_ ne $skip_idx } keys %$hofarray;
+    my @keys = grep { $_ ne $skip_idx } keys %$hofarray;
     my @restofit = uniq map {@$_} @$hofarray{@keys};
     return @restofit;
 }

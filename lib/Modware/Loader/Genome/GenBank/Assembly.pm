@@ -1,6 +1,6 @@
 package Modware::Loader::Genome::GenBank::Assembly;
 {
-    $Modware::Loader::Genome::GenBank::Assembly::VERSION = '1.0.0';
+  $Modware::Loader::Genome::GenBank::Assembly::VERSION = '1.0.0';
 }
 use namespace::autoclean;
 use Moose;

@@ -1,9 +1,10 @@
 package Modware::Report;
 {
-    $Modware::Report::VERSION = '1.0.0';
+  $Modware::Report::VERSION = '1.0.0';
 }
 
-#Other modules
+
+ #Other modules
 use Moose;
 use namespace::autoclean;
 extends qw/MooseX::App::Cmd/;

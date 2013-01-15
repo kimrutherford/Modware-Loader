@@ -1,6 +1,6 @@
 package Modware::Role::Command::Export::FilterId;
 {
-    $Modware::Role::Command::Export::FilterId::VERSION = '1.0.0';
+  $Modware::Role::Command::Export::FilterId::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -21,7 +21,7 @@ has '_skip_id_stack' => (
     default => sub { {} },
     handles => {
         '_add_skip_id'      => 'set',
-        'has_skip_id'       => 'get',
+        'has_skip_id'      => 'get',
         '_clear_skip_stack' => 'clear'
     }
 );
@@ -37,7 +37,7 @@ sub init_resource {
     while ( my $line = $handler->getline ) {
         next if $line !~ /\S+/;
         chomp $line;
-        $self->_add_skip_id( $line, 1 );
+        $self->_add_skip_id($line,  1);
     }
     $handler->close;
 }

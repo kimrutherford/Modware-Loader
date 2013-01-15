@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::Curated::Dicty;
 {
-    $Modware::EventHandler::FeatureReader::Chado::Curated::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::Curated::Dicty::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -64,8 +64,8 @@ sub read_transcript {
         'subject',
         {   'type_2.name' => [ { 'like' => '%RNA%' }, 'pseudogene' ],
             'db.name'          => 'GFF_source',
-            'dbxref.accession' => $self->source,
-            'is_deleted'       => 0
+            'dbxref.accession' => $self->source, 
+            'is_deleted' => 0
         },
         { join => [ 'type', { 'feature_dbxrefs' => { 'dbxref' => 'db' } } ] }
         );

@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Temp::Obo;
 {
-    $Modware::Loader::Role::Temp::Obo::VERSION = '1.0.0';
+  $Modware::Loader::Role::Temp::Obo::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -67,8 +67,8 @@ sub load_cvterm_in_tmp {
     my $logger = $self->logger;
     my $schema = $self->chado;
 
-    $logger->log( "going to load ",
-        $self->node_count, " cvterms in temp table" );
+    $logger->log( "going to load ",  $self->node_count,
+        " cvterms in temp table" );
     $self->add_node_header(
         [   qw/name db_id cv_id accession definition is_obsolete is_relationshiptype
                 cmmt/
@@ -86,8 +86,8 @@ sub load_relation_in_tmp {
     my $logger = $self->logger;
     my $schema = $self->chado;
 
-    $logger->log( "going to load ",
-        $self->relation_count, " relations in temp table" );
+    $logger->log( "going to load ",  $self->relation_count,
+        " relations in temp table" );
 
     my $relations = [ $self->all_relations ];
     unshift @$relations, [qw/subject object predicate/];
@@ -104,8 +104,7 @@ sub load_relation_attr_in_tmp {
     my $schema = $self->chado;
 
     $logger->log(
-        "going to load ",
-        $self->relation_attr_count,
+        "going to load ",  $self->relation_attr_count,
         " relation attributes in temp table"
     );
 
@@ -123,13 +122,17 @@ sub load_synonym_in_tmp {
     my $logger = $self->logger;
     my $schema = $self->chado;
 
-    $logger->log( "going to load ",
-        $self->synonym_count, " synonyms in temp table" );
+    $logger->log(
+        "going to load ",  $self->synonym_count,
+        " synonyms in temp table"
+    );
 
-    $self->add_synonym_header( [qw/type_id name syn is_obsolete/] );
-    $schema->resultset('TempSyn')->populate( [ $self->all_synonyms ] );
-    my $count
-        = $schema->resultset('TempSyn')->count( {}, { select => 'syn' } );
+    $self->add_synonym_header(
+        [qw/type_id name syn is_obsolete/] );
+    $schema->resultset('TempSyn')
+        ->populate( [ $self->all_synonyms ] );
+    my $count = $schema->resultset('TempSyn')
+        ->count( {}, { select => 'syn' } );
     $logger->log("loaded $count synonyms in temp table");
 }
 
@@ -139,13 +142,14 @@ sub load_alt_ids_in_tmp {
     my $schema = $self->chado;
 
     $logger->log(
-        "going to load ",
-        $self->alt_ids_count,
+        "going to load ",  $self->alt_ids_count,
         " alt ids in temp table"
     );
 
-    $self->add_alt_id_header( [qw/accession name db_id/] );
-    $schema->resultset('TempAltId')->populate( [ $self->all_alt_ids ] );
+    $self->add_alt_id_header(
+        [qw/accession name db_id/] );
+    $schema->resultset('TempAltId')
+        ->populate( [ $self->all_alt_ids ] );
     my $count = $schema->resultset('TempAltId')
         ->count( {}, { select => 'accession' } );
 
@@ -158,13 +162,14 @@ sub load_xref_in_tmp {
     my $schema = $self->chado;
 
     $logger->log(
-        "going to load ",
-        $self->xref_count,
+        "going to load ",  $self->xref_count,
         " xrefs in temp table"
     );
 
-    $self->add_xref_header( [qw/accession name db_id is_obsolete/] );
-    $schema->resultset('TempXref')->populate( [ $self->all_xrefs ] );
+    $self->add_xref_header(
+        [qw/accession name db_id is_obsolete/] );
+    $schema->resultset('TempXref')
+        ->populate( [ $self->all_xrefs] );
     my $count = $schema->resultset('TempXref')
         ->count( {}, { select => 'accession' } );
 

@@ -1,6 +1,6 @@
 package Modware::Load::Command::bioportalobo2chado;
 {
-    $Modware::Load::Command::bioportalobo2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::bioportalobo2chado::VERSION = '1.0.0';
 }
 use strict;
 use namespace::autoclean;

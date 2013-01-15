@@ -1,6 +1,6 @@
 package Modware::Fetch::Command;
 {
-    $Modware::Fetch::Command::VERSION = '1.0.0';
+  $Modware::Fetch::Command::VERSION = '1.0.0';
 }
 
 use strict;
@@ -23,7 +23,8 @@ with 'MooseX::ConfigFromFile';
 subtype 'DataDir'  => as 'Str' => where { -d $_ };
 subtype 'DataFile' => as 'Str' => where { -f $_ };
 subtype 'FileObject' => as class_type('Path::Class::File');
-coerce 'FileObject' => from 'Str' => via { Path::Class::File->new($_) };
+coerce 'FileObject'  => from 'Str' =>
+    via { Path::Class::File->new($_) };
 
 has '+configfile' => (
     cmd_aliases   => 'c',
@@ -57,20 +58,21 @@ has 'output' => (
     traits        => [qw/Getopt/],
     cmd_aliases   => 'o',
     required      => 1,
-    coerce        => 1,
+    coerce => 1, 
     documentation => 'Name of the output file'
 );
 
 has 'output_handler' => (
-    is      => 'ro',
-    isa     => 'IO::Handle',
-    traits  => [qw/NoGetopt/],
-    lazy    => 1,
-    default => sub {
-        my ($self) = @_;
-        return $self->output->openw;
-    }
+	is => 'ro', 
+	isa => 'IO::Handle', 
+	traits => [qw/NoGetopt/], 
+	lazy => 1, 
+	default => sub {
+		my ($self) = @_;
+		return $self->output->openw;
+	}
 );
+
 
 sub _build_data_dir {
     return rel2abs(cwd);

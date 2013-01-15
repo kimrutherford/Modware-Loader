@@ -5,7 +5,7 @@ use warnings;
 
 package Modware::Load::Command::ebigaf2chado;
 {
-    $Modware::Load::Command::ebigaf2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::ebigaf2chado::VERSION = '1.0.0';
 }
 
 use Bio::Chado::Schema;
@@ -165,7 +165,7 @@ sub find {
 
 package EBIQuery;
 {
-    $EBIQuery::VERSION = '1.0.0';
+  $EBIQuery::VERSION = '1.0.0';
 }
 
 use LWP::UserAgent;
@@ -217,7 +217,7 @@ sub query_ebi {
 
 package GAFManager;
 {
-    $GAFManager::VERSION = '1.0.0';
+  $GAFManager::VERSION = '1.0.0';
 }
 
 use Moose;
@@ -234,26 +234,26 @@ has 'schema' => (
 );
 
 has 'cvterm_date' => (
-    is         => 'rw',
-    isa        => 'Int',
+    is  => 'rw',
+    isa => 'Int',
     dependency => All ['schema']
 );
 
 has 'cvterm_with_from' => (
-    is         => 'rw',
-    isa        => 'Int',
+    is  => 'rw',
+    isa => 'Int',
     dependency => All ['schema']
 );
 
 has 'cvterm_assigned_by' => (
-    is         => 'rw',
-    isa        => 'Int',
+    is  => 'rw',
+    isa => 'Int',
     dependency => All ['schema']
 );
 
 has 'cvterm_qualifier' => (
-    is         => 'rw',
-    isa        => 'Int',
+    is  => 'rw',
+    isa => 'Int',
     dependency => All ['schema']
 );
 
@@ -317,7 +317,7 @@ sub init {
 
 package Annotation;
 {
-    $Annotation::VERSION = '1.0.0';
+  $Annotation::VERSION = '1.0.0';
 }
 
 use Moose;

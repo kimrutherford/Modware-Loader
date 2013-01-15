@@ -1,6 +1,6 @@
 package Modware::Role::Command::WithCounter;
 {
-    $Modware::Role::Command::WithCounter::VERSION = '1.0.0';
+  $Modware::Role::Command::WithCounter::VERSION = '1.0.0';
 }
 
 # Other modules:

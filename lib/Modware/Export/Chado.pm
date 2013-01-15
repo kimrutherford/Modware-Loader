@@ -1,6 +1,6 @@
 package Modware::Export::Chado;
 {
-    $Modware::Export::Chado::VERSION = '1.0.0';
+  $Modware::Export::Chado::VERSION = '1.0.0';
 }
 
 use strict;

@@ -26,6 +26,7 @@ describe "An EBI query object" => sub {
     #dies_ok( sub { $ebi_query->query_ebi('') } );
     #};
 
+
 };
 runtests unless caller;
 

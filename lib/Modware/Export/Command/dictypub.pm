@@ -1,6 +1,6 @@
 package Modware::Export::Command::dictypub;
 {
-    $Modware::Export::Command::dictypub::VERSION = '1.0.0';
+  $Modware::Export::Command::dictypub::VERSION = '1.0.0';
 }
 use strict;
 
@@ -49,7 +49,7 @@ has 'base_query' => (
     handles => {
         add_query       => 'set',
         get_query_value => 'get',
-        clean_queries   => 'clear'
+        clean_queries => 'clear'
     }
 );
 

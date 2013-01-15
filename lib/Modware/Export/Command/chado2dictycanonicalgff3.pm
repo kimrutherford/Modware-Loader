@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictycanonicalgff3;
 {
-    $Modware::Export::Command::chado2dictycanonicalgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictycanonicalgff3::VERSION = '1.0.0';
 }
 
 use strict;

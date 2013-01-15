@@ -1,6 +1,6 @@
 package Modware::Transform::Command::blast2gbrowsegff3;
 {
-    $Modware::Transform::Command::blast2gbrowsegff3::VERSION = '1.0.0';
+  $Modware::Transform::Command::blast2gbrowsegff3::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -357,7 +357,7 @@ sub write_hsp {
                 source => $self->source,
                 start  => $hsp->start('subject'),
                 end    => $hsp->end('subject'),
-                strand => $hsp->strand('hit') == 1 ? '+' : '-',
+                strand => $hsp->strand( 'hit') == 1 ? '+' : '-',
                 score      => sprintf( "%.3g", $hsp->significance ),
                 attributes => {
                     Gap    => [ join( ' ', @str ) ],

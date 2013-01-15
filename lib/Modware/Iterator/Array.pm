@@ -1,6 +1,6 @@
 package Modware::Iterator::Array;
 {
-    $Modware::Iterator::Array::VERSION = '1.0.0';
+  $Modware::Iterator::Array::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -20,9 +20,9 @@ has '_stack' => (
         'get_by_index' => 'get',
         'add'          => 'push',
         'members'      => 'elements',
-        'member_count' => 'count',
-        'has_member'   => 'count',
-        'sort_member'  => 'sort_in_place'
+        'member_count' => 'count', 
+        'has_member' => 'count', 
+        'sort_member' => 'sort_in_place'
     }
 );
 

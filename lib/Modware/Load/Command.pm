@@ -1,6 +1,6 @@
 package Modware::Load::Command;
 {
-    $Modware::Load::Command::VERSION = '1.0.0';
+  $Modware::Load::Command::VERSION = '1.0.0';
 }
 
 use strict;
@@ -20,10 +20,11 @@ with 'MooseX::ConfigFromFile';
 # Module implementation
 #
 
+
 has '+configfile' => (
-    cmd_aliases   => 'c',
-    documentation => 'yaml config file to specify all command line options',
-    traits        => [qw/Getopt/]
+	cmd_aliases => 'c', 
+	documentation => 'yaml config file to specify all command line options', 
+	traits => [qw/Getopt/]
 );
 
 has 'data_dir' => (
@@ -34,8 +35,8 @@ has 'data_dir' => (
     cmd_aliases => 'd',
     documentation =>
         'Folder from where input files can be captured,  default to the folder of the running script',
-    builder => '_build_data_dir',
-    lazy    => 1,
+    builder => '_build_data_dir', 
+    lazy => 1, 
 );
 
 has 'input' => (
@@ -47,38 +48,40 @@ has 'input' => (
 );
 
 has 'dsn' => (
-    is            => 'rw',
-    isa           => Dsn,
-    documentation => 'database DSN',
-    required      => 1
+	is => 'rw', 
+	isa => Dsn, 
+	documentation => 'database DSN', 
+	required => 1
 );
 
 has 'user' => (
-    is            => 'rw',
-    isa           => 'Str',
-    traits        => [qw/Getopt/],
-    cmd_aliases   => 'u',
-    documentation => 'database user'
+	is => 'rw', 
+	isa => 'Str', 
+	traits => [qw/Getopt/], 
+	cmd_aliases => 'u', 
+	documentation => 'database user'
 );
 
 has 'password' => (
-    is            => 'rw',
-    isa           => 'Str',
-    traits        => [qw/Getopt/],
-    cmd_aliases   => [qw/p pass/],
-    documentation => 'database password'
+	is => 'rw', 
+	isa => 'Str', 
+	traits => [qw/Getopt/], 
+	cmd_aliases => [qw/p pass/], 
+	documentation => 'database password'
 );
 
 has 'attribute' => (
-    is            => 'rw',
-    isa           => 'HashRef',
-    traits        => [qw/Getopt/],
-    cmd_aliases   => 'attr',
-    documentation => 'Additional database attribute',
-    default       => sub {
-        { 'LongReadLen' => 2**20, AutoCommit => 1 };
-    }
+	is => 'rw', 
+	isa => 'HashRef', 
+	traits => [qw/Getopt/], 
+	cmd_aliases => 'attr', 
+	documentation => 'Additional database attribute', 
+	default => sub {
+		{ 'LongReadLen' => 2**20,  AutoCommit => 1}
+	}
 );
+
+
 
 sub _build_data_dir {
     return rel2abs(cwd);

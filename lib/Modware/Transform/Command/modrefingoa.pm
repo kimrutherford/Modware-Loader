@@ -1,6 +1,6 @@
 package Modware::Transform::Command::modrefingoa;
 {
-    $Modware::Transform::Command::modrefingoa::VERSION = '1.0.0';
+  $Modware::Transform::Command::modrefingoa::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -41,7 +41,7 @@ sub execute {
 
     my $input    = $self->input_handler;
     my $output   = $self->output_handler;
-    my $godb     = $self->godb;
+    my $godb = $self->godb;
     my $goregexp = qr/^$godb/;
 
 LINE:

@@ -1,6 +1,6 @@
 package Modware::Role::Command::Convert::Resource::gp2protein;
 {
-    $Modware::Role::Command::Convert::Resource::gp2protein::VERSION = '1.0.0';
+  $Modware::Role::Command::Convert::Resource::gp2protein::VERSION = '1.0.0';
 }
 
 # Other modules:

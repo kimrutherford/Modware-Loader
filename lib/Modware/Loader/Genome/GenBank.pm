@@ -1,6 +1,6 @@
 package Modware::Loader::Genome::GenBank;
 {
-    $Modware::Loader::Genome::GenBank::VERSION = '1.0.0';
+  $Modware::Loader::Genome::GenBank::VERSION = '1.0.0';
 }
 use namespace::autoclean;
 use Moose;
@@ -922,7 +922,7 @@ sub chado_dbxref {
 sub calculate_polypeptide_seq {
     my ( $self, $trans ) = @_;
     my $model = Bio::SeqFeature::Gene::Transcript->new(
-        -seq_id => 'model_transcript',
+        -seq_id => 'model_transcript', 
         -strand => $trans->strand,
         -start  => $trans->start,
         -end    => $trans->end
@@ -964,8 +964,7 @@ sub linkfeat2pub {
         }
     );
     my $rs2
-        = $rs->search_related( 'featureloc_srcfeatures', {} )
-        ->search_related(
+        = $rs->search_related( 'featureloc_srcfeatures', {} )->search_related(
         'feature',
         { 'type.name' => { -in => [ $self->all_feat2link ] } },
         { 'join'      => 'type' }

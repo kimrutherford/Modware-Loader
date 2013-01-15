@@ -1,6 +1,6 @@
 package Modware::Transform::Convert;
 {
-    $Modware::Transform::Convert::VERSION = '1.0.0';
+  $Modware::Transform::Convert::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -20,9 +20,10 @@ has 'location' => (
 );
 
 has 'converter' => (
-    is            => 'rw',
-    isa           => 'Str',
-    documentation => 'The converter module to use for id translation'
+    is      => 'rw',
+    isa     => 'Str',
+    documentation =>
+        'The converter module to use for id translation'
 );
 
 has 'namespace' => (

@@ -1,6 +1,6 @@
 package Modware::Generator::Command::create;
 {
-    $Modware::Generator::Command::create::VERSION = '1.0.0';
+  $Modware::Generator::Command::create::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -14,13 +14,12 @@ extends qw/Modware::Generator::Command/;
 
 # Module implementation
 #
-has [qw/group command/] =>
-    ( is => 'rw', isa => 'Str', traits => [qw/NoGetopt/] );
+has [qw/group command/] => (is => 'rw',  isa => 'Str',  traits => [qw/NoGetopt/]);
 
 sub create_group_file {
     my ( $self, $group_file ) = @_;
     my $group_handler = $group_file->openw;
-    my $group         = $self->group;
+    my $group = $self->group;
     $group_handler->print("package Modware::$group;\n\n");
     $group_handler->print(<<'GROUP');
 
@@ -44,7 +43,7 @@ GROUP
 sub create_cmd_class_file {
     my ( $self, $cmd_class_file ) = @_;
     my $cmd_class_handler = $cmd_class_file->openw;
-    my $group             = $self->group;
+    my $group = $self->group;
     $cmd_class_handler->print(
         "package Modware::" . $group . "::Command;\n\n" );
     $cmd_class_handler->print(<<'CMD_CLASS');
@@ -66,8 +65,8 @@ CMD_CLASS
 sub create_cmd_file {
     my ( $self, $cmd_file ) = @_;
     my $cmd_file_handler = $cmd_file->openw;
-    my $group            = $self->group;
-    my $cmd              = $self->command;
+    my $group = $self->group;
+    my $cmd = $self->command;
     $cmd_file_handler->print(
         "package Modware::" . $group . "::Command::$cmd;\n\n" );
     $cmd_file_handler->print("use namespace::autoclean;\nuse Moose;\n");
@@ -114,7 +113,7 @@ sub execute {
         $logger->info("Created $group_file");
     }
 
-    # Command class file
+	# Command class file
     my $cmd_class_file = $basedir->subdir($group)->file('Command.pm');
     if ( -e $cmd_class_file ) {
         $logger->warn("$cmd_class_file exists !!! skipping");
@@ -124,7 +123,7 @@ sub execute {
         $logger->info("Created $cmd_class_file");
     }
 
-    # Command file
+	# Command file
     my $cmd_file = $cmddir->file( $cmd . '.pm' );
     if ( -e $cmd_file ) {
         $logger->logdie("$cmd_file exists!! skipping");

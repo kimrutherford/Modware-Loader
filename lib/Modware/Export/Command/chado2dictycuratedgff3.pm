@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictycuratedgff3;
 {
-    $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.0.0';
 }
 
 use strict;
@@ -59,8 +59,8 @@ sub execute {
         );
 
     my $write_handler
-        = Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty
-        ->new( output => $self->output_handler );
+        = Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty->new(
+        output => $self->output_handler );
 
     my $source = $self->schema->source('Sequence::Feature');
     $source->remove_column('is_obsolete');
@@ -75,8 +75,8 @@ sub execute {
         resource => $self->schema );
 
     for my $name (qw/reference seq_id gene transcript exon/) {
-        my $read_api = 'read_' . $name;
-        $event->on( $read_api => sub { $read_handler->$read_api(@_) } );
+        my $read_api  = 'read_' . $name;
+        $event->on( $read_api  => sub { $read_handler->$read_api(@_) } );
     }
 
     $event->on(

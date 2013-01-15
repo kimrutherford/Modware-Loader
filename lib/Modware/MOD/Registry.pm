@@ -1,6 +1,6 @@
 package Modware::MOD::Registry;
 {
-    $Modware::MOD::Registry::VERSION = '1.0.0';
+  $Modware::MOD::Registry::VERSION = '1.0.0';
 }
 use namespace::autoclean;
 use Moose;

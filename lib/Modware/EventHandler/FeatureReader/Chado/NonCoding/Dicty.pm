@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::NonCoding::Dicty;
 {
-    $Modware::EventHandler::FeatureReader::Chado::NonCoding::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::NonCoding::Dicty::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -26,10 +26,10 @@ sub read_transcript {
                 'H_ACA_box_snoRNA', 'SRP_RNA',
                 'RNase_P_RNA',      'RNAase_MRP_RNA',
                 'snoRNA',           'rRNA',
-                'ncRNA',            'tRNA'
+                'ncRNA', 'tRNA'
             ],
-            'db.name'    => 'GFF_source',
-            'is_deleted' => 0
+            'db.name'          => 'GFF_source',
+            'is_deleted'       => 0
         },
         { join => [ 'type', { 'feature_dbxrefs' => { 'dbxref' => 'db' } } ] }
         );

@@ -1,6 +1,6 @@
 package Modware::Update::Command::pubindicty;
 {
-    $Modware::Update::Command::pubindicty::VERSION = '1.0.0';
+  $Modware::Update::Command::pubindicty::VERSION = '1.0.0';
 }
 use strict;
 
@@ -139,7 +139,7 @@ NODE:
             if ( $dicty_pub->has_full_text_url ) {
                 if ( $dicty_pub->full_text_url ne $url ) {
                     $dicty_pub->full_text_url($url);
-                    $log->info("updated full text url to $url");
+                    $log->info( "updated full text url to $url" );
                     $self->set_update_flag;
                 }
             }

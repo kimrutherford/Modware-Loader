@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2alignmentgff3;
 {
-    $Modware::Export::Command::chado2alignmentgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2alignmentgff3::VERSION = '1.0.0';
 }
 use strict;
 

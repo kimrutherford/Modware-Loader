@@ -1,7 +1,8 @@
 package Modware::Transform;
 {
-    $Modware::Transform::VERSION = '1.0.0';
+  $Modware::Transform::VERSION = '1.0.0';
 }
+
 
 # Other modules:
 use Moose;
@@ -10,6 +11,7 @@ extends qw/MooseX::App::Cmd/;
 
 # Module implementation
 #
+
 
 1;    # Magic true value required at end of module
 

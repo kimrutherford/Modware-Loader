@@ -1,6 +1,6 @@
 package Modware::Role::Command::CanCompress;
 {
-    $Modware::Role::Command::CanCompress::VERSION = '1.0.0';
+  $Modware::Role::Command::CanCompress::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -15,21 +15,22 @@ use IO::Compress::Gzip qw($GzipError gzip);
 requires 'current_logger';
 
 sub compress {
-    my $self = shift;
-    my ( $input, $output ) = validated_list(
-        \@_,
-        input  => { isa => 'Str' },
-        output => { isa => 'Str' }
-    );
+	my $self = shift;
+	my ($input,  $output) = validated_list(
+		\@_, 	
+		input => { isa => 'Str'}, 
+		output => { isa => 'Str'}
+	);
 
-    my $logger = $self->current_logger;
-    if ( gzip $input => $output ) {
-        $logger->info("compressed $input to $output");
-    }
-    else {
-        $logger->error($GzipError);
-    }
+	my $logger = $self->current_logger;
+	if (gzip $input => $output) {
+		$logger->info("compressed $input to $output");
+	} 
+	else {
+		$logger->error($GzipError);
+	}
 }
+
 
 1;    # Magic true value required at end of module
 

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty;
 {
-    $Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty::VERSION = '1.0.0';
 }
 
 # Other modules:
@@ -27,8 +27,8 @@ sub read_feature {
         'feature',
         {   'type.name'        => $self->feature_type,
             'db.name'          => 'GFF_source',
-            'dbxref.accession' => $self->source,
-            'is_deleted'       => 0
+            'dbxref.accession' => $self->source, 
+            'is_deleted' => 0
         },
         { join => [ 'type', { 'feature_dbxrefs' => { 'dbxref' => 'db' } } ] }
         );

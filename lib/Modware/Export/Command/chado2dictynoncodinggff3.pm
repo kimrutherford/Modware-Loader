@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictynoncodinggff3;
 {
-    $Modware::Export::Command::chado2dictynoncodinggff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictynoncodinggff3::VERSION = '1.0.0';
 }
 
 use strict;
@@ -48,7 +48,7 @@ sub execute {
     my $read_handler
         = Modware::EventHandler::FeatureReader::Chado::NonCoding::Dicty->new(
         reference_type => 'chromosome',
-        common_name    => 'dicty',
+        common_name    => 'dicty', 
         );
 
     my $write_handler

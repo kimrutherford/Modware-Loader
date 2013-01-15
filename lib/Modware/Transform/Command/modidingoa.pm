@@ -1,6 +1,6 @@
 package Modware::Transform::Command::modidingoa;
 {
-    $Modware::Transform::Command::modidingoa::VERSION = '1.0.0';
+  $Modware::Transform::Command::modidingoa::VERSION = '1.0.0';
 }
 
 # Other modules:

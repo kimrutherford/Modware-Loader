@@ -1,6 +1,6 @@
 package Modware::Load;
 {
-    $Modware::Load::VERSION = '1.0.0';
+  $Modware::Load::VERSION = '1.0.0';
 }
 use strict;
 

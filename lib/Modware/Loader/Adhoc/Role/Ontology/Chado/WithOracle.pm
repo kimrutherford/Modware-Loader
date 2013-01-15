@@ -1,13 +1,13 @@
 package Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle;
 {
-    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle::VERSION = '1.0.0';
+  $Modware::Loader::Adhoc::Role::Ontology::Chado::WithOracle::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
 use Moose::Role;
 
 sub transform_schema {
-    my ( $self, $schema ) = @_;
+    my ($self, $schema) = @_;
     my $source = $schema->source('Cv::Cvtermsynonym');
     $source->remove_column('synonym');
     $source->add_column(

@@ -1,6 +1,6 @@
 package Modware::Report::Command::sumstatsongff3;
 {
-    $Modware::Report::Command::sumstatsongff3::VERSION = '1.0.0';
+  $Modware::Report::Command::sumstatsongff3::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;

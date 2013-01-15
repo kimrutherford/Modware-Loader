@@ -1,12 +1,12 @@
 package Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql;
 {
-    $Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
+  $Modware::Loader::Adhoc::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
 use Moose::Role;
 
-sub transform_schema { }
+sub transform_schema {}
 
 1;    # Magic true value required at end of module
 

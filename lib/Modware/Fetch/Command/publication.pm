@@ -1,6 +1,6 @@
 package Modware::Fetch::Command::publication;
 {
-    $Modware::Fetch::Command::publication::VERSION = '1.0.0';
+  $Modware::Fetch::Command::publication::VERSION = '1.0.0';
 }
 use strict;
 
@@ -22,7 +22,7 @@ with 'Modware::Role::Command::WithEmail';
 # Module implementation
 #
 
-has '+input' => ( traits => [qw/NoGetopt/] );
+has '+input' => ( traits => [qw/NoGetopt/]);
 
 has '+output' => (
     default => sub {
@@ -45,7 +45,7 @@ has 'link_output' => (
         my $self = shift;
         return catfile( $self->data_dir,
             'pubmed_links_' . $self->date . '.xml' );
-    },
+    }, 
     lazy => 1
 );
 
@@ -87,7 +87,7 @@ has 'query' => (
         if ( $self->has_genus and $self->has_species ) {
             return $self->genus . ' OR ' . $self->species . '[tw]';
         }
-    },
+    }, 
     lazy => 1
 );
 
@@ -149,7 +149,7 @@ has 'date' => (
 
 sub execute {
     my $self   = shift;
-    my $log    = $self->dual_logger;
+    my $log = $self->dual_logger;
     my $eutils = Bio::DB::EUtilities->new(
         -eutil      => 'esearch',
         -db         => $self->db,
@@ -161,15 +161,15 @@ sub execute {
     );
     my $hist = $eutils->next_History || $log->logdie("no history");
 
-    $log->info( 'got ', $eutils->get_count, ' references' );
+    $log->info('got ',  $eutils->get_count,  ' references');
 
     my @ids = $eutils->get_ids;
 
     $eutils->reset_parameters(
         -eutils  => 'efetch',
         -db      => $self->db,
-        -history => $hist,
-        -email   => $self->from
+        -history => $hist, 
+        -email => $self->from
     );
 
     $eutils->get_Response(
@@ -182,8 +182,8 @@ sub execute {
         -eutil  => 'elink',
         -dbfrom => $self->db,
         -cmd    => 'prlinks',
-        -id     => [@ids],
-        -email  => $self->from
+        -id     => [@ids], 
+        -email => $self->from
     );
 
     $eutils->get_Response( -file => $self->link_output );
@@ -199,12 +199,12 @@ sub execute {
             },
             'pretty_print' => 'indented',
         )->parsefile( $self->temp_file );
-        $twig->print( $self->output_handler );
+        $twig->print($self->output_handler);
         $self->output_handler->close;
         $log->info('done patching copyright');
     }
 
-    $log->info( 'wrote output to file ', $self->output->stringify );
+    $log->info('wrote output to file ',  $self->output->stringify);
     $self->subject('weekly pubmed retrieval');
 }
 

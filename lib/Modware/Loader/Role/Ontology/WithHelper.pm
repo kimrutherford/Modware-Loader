@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::WithHelper;
 {
-    $Modware::Loader::Role::Ontology::WithHelper::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::WithHelper::VERSION = '1.0.0';
 }
 
 use namespace::autoclean;
@@ -10,6 +10,7 @@ use utf8;
 
 requires 'schema';
 requires 'ontology';
+
 
 has '_cvrow_id' => (
     is      => 'rw',
@@ -60,25 +61,25 @@ has '_dbrow' => (
     }
 );
 
+
 sub find_or_create_dbrow {
     my ( $self, $db ) = @_;
-    if ( $self->has_dbrow($db) ) {
-        return $self->get_dbrow($db);
+    if ($self->has_dbrow($db)) {
+    	return $self->get_dbrow($db);
     }
-    my $dbrow = $self->schema->resultset('General::Db')
+    my $dbrow  = $self->schema->resultset('General::Db')
         ->find_or_create( { name => $db } );
-    $self->set_dbrow( $db, $dbrow );
+    $self->set_dbrow( $db, $dbrow ); 
     return $dbrow;
 }
 
 sub find_or_create_cvrow {
     my ( $self, $cv ) = @_;
-    if ( $self->has_cvrow($cv) ) {
-        return $self->get_cvrow($cv);
+    if ($self->has_cvrow($cv)) {
+    	return $self->get_cvrow($cv);
     }
     my $cvrow
-        = $self->schema->resultset('Cv::Cv')
-        ->find_or_create( { name => $cv } );
+        = $self->schema->resultset('Cv::Cv')->find_or_create( { name => $cv } );
     $self->set_cvrow( $cv, $cvrow );
     return $cvrow;
 }
@@ -86,8 +87,8 @@ sub find_or_create_cvrow {
 sub find_or_create_cvrow_id {
     my ( $self, $cv ) = @_;
     my $schema = $self->schema;
-    if ( $self->has_cvrow_id($cv) ) {
-        return $self->get_cvrow_id($cv);
+    if ($self->has_cvrow_id($cv)) {
+    	return $self->get_cvrow_id($cv);
     }
     my $cvrow
         = $schema->resultset('Cv::Cv')->find_or_create( { name => $cv } );
@@ -149,18 +150,18 @@ sub find_or_create_db_id {
 sub _normalize_id {
     my ( $self, $id ) = @_;
     my ( $db_id, $accession );
-    if ( $self->has_idspace($id) ) {
-        my @parsed = $self->parse_id($id);
+    if ( $self->has_idspace( $id ) ) {
+        my @parsed = $self->parse_id( $id );
         $db_id     = $self->find_or_create_db_id( $parsed[0] );
         $accession = $parsed[1];
     }
     else {
-        $db_id = $self->find_or_create_db_id(
-            $self->ontology->default_namespace );
+        $db_id     = $self->find_or_create_db_id( $self->ontology->default_namespace );
         $accession = $id;
     }
-    return ( $db_id, $accession );
+    return ($db_id, $accession);
 }
+
 
 1;
 

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2;
 {
-    $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2::VERSION = '1.0.0';
 }
 
 # Other modules:

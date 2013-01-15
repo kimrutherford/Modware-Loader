@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Chado::WithPostgresql;
 {
-    $Modware::Loader::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Chado::WithPostgresql::VERSION = '1.0.0';
 }
 
 # Other modules:

@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2canonicalgff3;
 {
-    $Modware::Export::Command::chado2canonicalgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2canonicalgff3::VERSION = '1.0.0';
 }
 use strict;
 
@@ -61,10 +61,9 @@ has 'reference_type' => (
 );
 
 has 'reference_id' => (
-    is  => 'rw',
-    isa => 'Str',
-    'documentation' =>
-        'reference feature name/ID/accession number. In this case,  only all of its associated features will be dumped. Takes precedence over dumping with mitochondrial options'
+    is              => 'rw',
+    isa             => 'Str',
+    'documentation' => 'reference feature name/ID/accession number. In this case,  only all of its associated features will be dumped. Takes precedence over dumping with mitochondrial options'
 );
 
 sub execute {
