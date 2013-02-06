@@ -9,13 +9,12 @@ requires "MooseX::App::Cmd" => "0.06";
 requires "MooseX::Attribute::Dependent" => "v1.1.2";
 requires "MooseX::ConfigFromFile" => "0.02";
 requires "MooseX::Getopt" => "0.50";
-requires "Tie::Cache" => "0.19";
+requires "Tie::Cache" => "0.17";
 requires "perl" => "5.010";
 recommends "Child" => "0.009";
 recommends "Email::Sender::Simple" => "0.102370";
 recommends "Email::Simple" => "2.10";
 recommends "Email::Valid" => "0.184";
-recommends "GOBO" => "0.03";
 recommends "Log::Dispatchouli" => "2.005";
 recommends "Modware" => "0.001";
 recommends "Spreadsheet::WriteExcel" => "2.37";
@@ -29,6 +28,10 @@ on 'build' => sub {
 
 on 'test' => sub {
   requires "Test::More" => "0.88";
+};
+
+on 'test' => sub {
+  recommends "Test::File" => "1.34";
 };
 
 on 'configure' => sub {

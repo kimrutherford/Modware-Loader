@@ -26,7 +26,6 @@ my %module_build_args = (
     "Email::Sender::Simple" => "0.102370",
     "Email::Simple" => "2.10",
     "Email::Valid" => "0.184",
-    "GOBO" => "0.03",
     "Log::Dispatchouli" => "2.005",
     "Modware" => "0.001",
     "Spreadsheet::WriteExcel" => "2.37",
@@ -47,7 +46,7 @@ my %module_build_args = (
     "MooseX::Attribute::Dependent" => "v1.1.2",
     "MooseX::ConfigFromFile" => "0.02",
     "MooseX::Getopt" => "0.50",
-    "Tie::Cache" => "0.19",
+    "Tie::Cache" => "0.17",
     "perl" => "5.010"
   },
   "script_files" => [
@@ -65,7 +64,13 @@ my %module_build_args = (
     "bin/modware-load",
     "bin/modware-transform",
     "bin/modware-update"
-  ]
+  ],
+  "share_dir" => {
+    "dist" => "share",
+    "module" => {
+      "Modware::Loader" => "share"
+    }
+  }
 );
 
 

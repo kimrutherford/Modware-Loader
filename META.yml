@@ -19,7 +19,6 @@ recommends:
   Email::Sender::Simple: 0.102370
   Email::Simple: 2.10
   Email::Valid: 0.184
-  GOBO: 0.03
   Log::Dispatchouli: 2.005
   Modware: 0.001
   Spreadsheet::WriteExcel: 2.37
@@ -38,6 +37,6 @@ requires:
   MooseX::Attribute::Dependent: v1.1.2
   MooseX::ConfigFromFile: 0.02
   MooseX::Getopt: 0.50
-  Tie::Cache: 0.19
+  Tie::Cache: 0.17
   perl: 5.010
 version: 1.0.0
