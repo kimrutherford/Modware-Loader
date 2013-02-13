@@ -46,9 +46,6 @@ sub execute {
     if ( $self->input ) {
         $loader->set_input( $self->input );
     }
-    else {
-        $loader->set_input( $manager->query_ebi() );
-    }
     $loader->set_limit( $self->limit );
 
     my $guard = $self->schema->storage->txn_scope_guard;
@@ -59,6 +56,8 @@ sub execute {
     $guard->commit;
 }
 
+with 'Modware::Role::Command::GOA::Dicty::AppendDuplicate';
+with 'Modware::Role::Command::GOA::Dicty::AppendncRNA';
 1;
 
 __END__

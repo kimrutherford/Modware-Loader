@@ -15,6 +15,9 @@ bin/modware-update
 cpanfile
 dist.ini
 lib/Modware/Collection/FeatureStack.pm
+lib/Modware/DataSource/Chado.pm
+lib/Modware/DataSource/Chado/BCS/Engine/Generic.pm
+lib/Modware/DataSource/Chado/BCS/Engine/Oracle.pm
 lib/Modware/EventEmitter/Feature/Chado.pm
 lib/Modware/EventEmitter/Feature/Chado/Canonical.pm
 lib/Modware/EventHandler/FeatureReader/Chado.pm
@@ -46,6 +49,7 @@ lib/Modware/Export/Command/chado2fasta.pm
 lib/Modware/Export/Command/dictygaf.pm
 lib/Modware/Export/Command/dictypub.pm
 lib/Modware/Export/GAF.pm
+lib/Modware/Factory/Chado/BCS.pm
 lib/Modware/Fetch.pm
 lib/Modware/Fetch/Command.pm
 lib/Modware/Fetch/Command/publication.pm
@@ -56,6 +60,9 @@ lib/Modware/Generator.pm
 lib/Modware/Generator/Command.pm
 lib/Modware/Generator/Command/create.pm
 lib/Modware/Iterator/Array.pm
+lib/Modware/Legacy/Schema.pm
+lib/Modware/Legacy/Schema/GeneProduct.pm
+lib/Modware/Legacy/Schema/LocusGp.pm
 lib/Modware/Load.pm
 lib/Modware/Load/Chado.pm
 lib/Modware/Load/Command.pm
@@ -113,6 +120,7 @@ lib/Modware/Role/Command/Convert/Resource/goref.pm
 lib/Modware/Role/Command/Convert/Resource/gp2protein.pm
 lib/Modware/Role/Command/Export/FilterId.pm
 lib/Modware/Role/Command/GOA/Dicty/AppendDuplicate.pm
+lib/Modware/Role/Command/GOA/Dicty/AppendncRNA.pm
 lib/Modware/Role/Command/Validate/Obo.pm
 lib/Modware/Role/Command/WithBCS.pm
 lib/Modware/Role/Command/WithCounter.pm
@@ -125,6 +133,8 @@ lib/Modware/Role/Command/WithLogger.pm
 lib/Modware/Role/Command/WithOutputLogger.pm
 lib/Modware/Role/Command/WithReportLogger.pm
 lib/Modware/Role/Command/WithValidationLogger.pm
+lib/Modware/Role/DataSource/Chado/BCS/Engine.pm
+lib/Modware/Role/DataSource/Util.pm
 lib/Modware/Role/EventHandler/Genome/Chado.pm
 lib/Modware/Role/Loggable.pm
 lib/Modware/Role/Tblastn/Filter.pm
@@ -138,14 +148,17 @@ lib/Modware/Transform/Command/blast2gbrowsegff3.pm
 lib/Modware/Transform/Command/modidingoa.pm
 lib/Modware/Transform/Command/modrefingoa.pm
 lib/Modware/Transform/Convert.pm
+lib/Modware/Types.pm
 lib/Modware/Update.pm
 lib/Modware/Update/Command.pm
 lib/Modware/Update/Command/oboinchado.pm
 lib/Modware/Update/Command/pubindicty.pm
 maint/bootstrap.sh
+maint/dump_ncRNA_gaf.pl
 maint/pg2rdbms.pl
 sample_conf/goa2modgaf.yaml
 share/chr2dups.txt
+share/dicty_ncRNA.gaf
 t/000-report-versions-tiny.t
 t/datafile/testdicty.gaf
 t/gaf2chado/datastash.t
@@ -156,4 +169,5 @@ t/moosex/clear.t
 t/release-distmeta.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+t/role/append_ncrna.t
 t/role/appenduplicate.t
