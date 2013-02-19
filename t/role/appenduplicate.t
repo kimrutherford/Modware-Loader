@@ -49,7 +49,7 @@ use File::Spec::Functions;
 
 my $test = new_ok('TestDuplicate');
 $test->test_input(
-    catfile( Module::Build->current->base_dir, 't', 'datafile', 'testdicty.gaf' )
+    catfile( Module::Build->current->base_dir, 't', 'test_data', 'testdicty.gaf2' )
 );
 
 file_exists_ok( $test->input );

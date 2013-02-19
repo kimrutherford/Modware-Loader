@@ -160,7 +160,6 @@ sample_conf/goa2modgaf.yaml
 share/chr2dups.txt
 share/dicty_ncRNA.gaf
 t/000-report-versions-tiny.t
-t/datafile/testdicty.gaf
 t/gaf2chado/datastash.t
 t/gaf2chado/gaf.t
 t/gaf2chado/gaf_manager.t
@@ -172,3 +171,4 @@ t/release-pod-syntax.t
 t/role/append_ncrna.t
 t/role/appenduplicate.t
 t/role/compress.t
+t/test_data/testdicty.gaf2
