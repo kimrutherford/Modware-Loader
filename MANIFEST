@@ -171,4 +171,5 @@ t/release-pod-syntax.t
 t/role/append_ncrna.t
 t/role/appenduplicate.t
 t/role/compress.t
+t/test_data/test_dicty_ncrna.gaf2
 t/test_data/testdicty.gaf2
