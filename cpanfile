@@ -15,8 +15,6 @@ recommends "Child" => "0.009";
 recommends "Email::Sender::Simple" => "0.102370";
 recommends "Email::Simple" => "2.10";
 recommends "Email::Valid" => "0.184";
-recommends "Log::Dispatchouli" => "2.005";
-recommends "Modware" => "0.001";
 recommends "Spreadsheet::WriteExcel" => "2.37";
 recommends "Text::TablularDisplay" => "1.33";
 recommends "XML::LibXML" => "1.70";
@@ -32,6 +30,7 @@ on 'test' => sub {
 
 on 'test' => sub {
   recommends "Test::File" => "1.34";
+  recommends "Test::Spec" => "0.46";
 };
 
 on 'configure' => sub {

@@ -19,8 +19,6 @@ recommends:
   Email::Sender::Simple: 0.102370
   Email::Simple: 2.10
   Email::Valid: 0.184
-  Log::Dispatchouli: 2.005
-  Modware: 0.001
   Spreadsheet::WriteExcel: 2.37
   Text::TablularDisplay: 1.33
   XML::LibXML: 1.70
