@@ -32,7 +32,7 @@ __PACKAGE__->meta->make_immutable;
 
 package main;
 
-#use File::Remove 'remove';
+use File::Remove 'remove';
 use File::Spec::Functions;
 use FindBin qw/$Bin/;
 use Test::Exception;
@@ -60,4 +60,4 @@ does_ok(
 file_exists_ok( $test->output );
 lives_ok { $test->execute() } 'runs execute method';
 file_exists_ok( $test->output . ".gz" );
-unlink $test->output . '.gz' ;
+remove( $test->output . ".gz" );

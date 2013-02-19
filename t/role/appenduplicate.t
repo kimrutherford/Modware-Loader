@@ -53,7 +53,7 @@ $test->test_input(
 );
 
 file_exists_ok( $test->input );
-file_line_count_is( $test->input, 16 );
+file_line_count_is( $test->input, 14 );
 
 my $output;
 my $handler = IO::File->new( \$output, 'w' );
@@ -64,4 +64,4 @@ my $reader = IO::File->new( \$output, 'r' );
 my $count = 0;
 while (<$reader>) { $count++ }
 $reader->close;
-is( $count, 52, 'it should have 28 lines in the output' );
+is( $count, 48, 'it should have 28 lines in the output' );
