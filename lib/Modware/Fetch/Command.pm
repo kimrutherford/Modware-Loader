@@ -29,7 +29,8 @@ coerce 'FileObject'  => from 'Str' =>
 has '+configfile' => (
     cmd_aliases   => 'c',
     documentation => 'yaml config file to specify all command line options',
-    traits        => [qw/Getopt/]
+    traits        => [qw/Getopt/], 
+    default       => sub { return undef }
 );
 
 has 'data_dir' => (
