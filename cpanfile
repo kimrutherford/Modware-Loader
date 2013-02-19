@@ -13,6 +13,7 @@ requires "MooseX::Attribute::Dependent" => "v1.1.2";
 requires "MooseX::ConfigFromFile" => "0.10";
 requires "MooseX::Event" => "v0.2.0";
 requires "MooseX::Getopt" => "0.56";
+requires "MooseX::Types::Path::Class" => "0.06";
 requires "Spreadsheet::WriteExcel" => "2.37";
 requires "Tie::Cache" => "0.17";
 requires "perl" => "5.010";

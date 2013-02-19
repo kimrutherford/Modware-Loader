@@ -65,6 +65,7 @@ eval { $v .= pmver('MooseX::Attribute::Dependent','v1.1.2') };
 eval { $v .= pmver('MooseX::ConfigFromFile','0.10') };
 eval { $v .= pmver('MooseX::Event','v0.2.0') };
 eval { $v .= pmver('MooseX::Getopt','0.56') };
+eval { $v .= pmver('MooseX::Types::Path::Class','0.06') };
 eval { $v .= pmver('Pod::Coverage::TrustPod','any version') };
 eval { $v .= pmver('Spreadsheet::WriteExcel','2.37') };
 eval { $v .= pmver('Test::CPAN::Meta','any version') };
