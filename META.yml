@@ -16,10 +16,6 @@ meta-spec:
 name: Modware-Loader
 recommends:
   Child: 0.009
-  Email::Sender::Simple: 0.102370
-  Email::Simple: 2.10
-  Email::Valid: 0.184
-  Spreadsheet::WriteExcel: 2.37
   Text::TablularDisplay: 1.33
   XML::LibXML: 1.70
   XML::Simple: 2.18
@@ -28,13 +24,18 @@ requires:
   Bio::GFF3::LowLevel: 1.5
   BioPortal::WebService: v1.0.0
   DBD::Oracle: 1.52
+  Email::Sender::Simple: 0.102370
+  Email::Simple: 2.10
+  Email::Valid: 0.184
   File::Find::Rule: 0.32
   Log::Log4perl: 1.40
   Math::Base36: 0.10
   MooseX::App::Cmd: 0.06
   MooseX::Attribute::Dependent: v1.1.2
   MooseX::ConfigFromFile: 0.02
+  MooseX::Event: v0.2.0
   MooseX::Getopt: 0.50
+  Spreadsheet::WriteExcel: 2.37
   Tie::Cache: 0.17
   perl: 5.010
 version: 1.0.0
