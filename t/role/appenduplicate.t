@@ -64,4 +64,4 @@ my $reader = IO::File->new( \$output, 'r' );
 my $count = 0;
 while (<$reader>) { $count++ }
 $reader->close;
-is( $count, 48, 'it should have 28 lines in the output' );
+is( $count, 49, 'it should have 29 lines in the output' );
