@@ -47,7 +47,7 @@ sub load_gaf {
             $self->upsert( $annotation, $rank );
             $count = $count + 1;
             if ( ( $count % 5000 ) == 0 ) {
-                $self->manager->logger->info(
+                $self->manager->logger->debug(
                     $count . ' annotations loaded so far' );
             }
             if ( $self->limit ) {
@@ -55,10 +55,6 @@ sub load_gaf {
             }
         }
     }
-    $self->manager->logger->info( 'Finished loading '
-            . $self->manager->schema->resultset('Sequence::FeatureCvterm')
-            ->search( {}, {} )->count
-            . ' annotations' );
 }
 
 

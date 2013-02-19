@@ -1,20 +1,18 @@
+
+use strict;
+
 package Modware::Export::Command::dictygaf;
 {
   $Modware::Export::Command::dictygaf::VERSION = '1.0.0';
 }
-use strict;
 
-# Other modules:
 use namespace::autoclean;
 use Moose;
+use Moose::Util qw/ensure_all_roles/;
 use Modware::Legacy::Schema;
 extends qw/Modware::Export::GAF/;
 
 with 'Modware::Role::Command::WithLogger';
-with 'Modware::Role::Command::WithEmail';
-
-# Module implementation
-#
 
 has '+input'          => ( traits => [qw/NoGetopt/] );
 has '+data_dir'       => ( traits => [qw/NoGetopt/] );
@@ -66,9 +64,19 @@ has '+source_database' => (
         GAF2.0,  default is dictyBase'
 );
 
-has '+common_name' => (
-    default => 'dicty'
+has '+common_name' => ( default => 'dicty' );
 
+has 'send_email' => (
+    is      => 'rw',
+    isa     => 'Bool',
+    default => 0,
+    trigger => sub {
+        my ($self) = @_;
+        $self->meta->make_mutable;
+        ensure_all_roles( $self, 'Modware::Role::Command::WithEmail' );
+        $self->meta->make_immutable;
+    },
+    documentation => ''
 );
 
 has 'legacy_dsn' => (
