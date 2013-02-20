@@ -72,7 +72,6 @@ eval { $v .= pmver('Test::CPAN::Meta','any version') };
 eval { $v .= pmver('Test::File','1.34') };
 eval { $v .= pmver('Test::Moose::More','0.0019') };
 eval { $v .= pmver('Test::More','0.88') };
-eval { $v .= pmver('Test::Pod','1.41') };
 eval { $v .= pmver('Test::Pod::Coverage','1.08') };
 eval { $v .= pmver('Test::Spec','0.46') };
 eval { $v .= pmver('Text::TablularDisplay','1.33') };

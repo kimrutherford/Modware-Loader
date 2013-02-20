@@ -167,7 +167,6 @@ t/gaf2chado/gaf_row.t
 t/moosex/clear.t
 t/release-distmeta.t
 t/release-pod-coverage.t
-t/release-pod-syntax.t
 t/role/append_ncrna.t
 t/role/appenduplicate.t
 t/role/compress.t
