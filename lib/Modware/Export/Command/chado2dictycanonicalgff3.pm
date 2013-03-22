@@ -1,11 +1,12 @@
 package Modware::Export::Command::chado2dictycanonicalgff3;
 {
-  $Modware::Export::Command::chado2dictycanonicalgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictycanonicalgff3::VERSION = '1.1.0';
 }
 
 use strict;
 use namespace::autoclean;
 use Moose;
+use Modware::Factory::Chado::BCS;
 use Modware::EventEmitter::Feature::Chado::Canonical;
 use Modware::EventHandler::FeatureReader::Chado::Canonical::Dicty;
 use Modware::EventHandler::FeatureWriter::GFF3::Canonical::Dicty;
@@ -63,15 +64,21 @@ sub execute {
             default_value => 'false'
         }
     );
+
+	my $fac = Modware::Factory::Chado::BCS->new;
+	$fac->get_engine('Oracle')->transform($self->schema);
+
     my $event = Modware::EventEmitter::Feature::Chado::Canonical->new(
         resource => $self->schema );
 
-    for my $name (qw/reference seq_id contig gene transcript exon/) {
+    for my $name (qw/reference seq_id contig gene exon/) {
         my $read_api  = 'read_' . $name;
         my $write_api = 'write_' . $name;
         $event->on( $read_api  => sub { $read_handler->$read_api(@_) } );
         $event->on( $write_api => sub { $write_handler->$write_api(@_) } );
     }
+    $event->on('read_transcript' => sub {$read_handler->read_canonical_transcript(@_)});
+    $event->on('write_transcript' => sub {$write_handler->write_transcript(@_)});
 
     if ( $self->reference_id ) {
         $read_handler->reference_id( $self->reference_id );
@@ -105,7 +112,7 @@ Modware::Export::Command::chado2dictycanonicalgff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

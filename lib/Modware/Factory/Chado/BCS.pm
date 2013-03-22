@@ -1,34 +1,29 @@
 package Modware::Factory::Chado::BCS;
 {
-  $Modware::Factory::Chado::BCS::VERSION = '1.0.0';
+  $Modware::Factory::Chado::BCS::VERSION = '1.1.0';
 }
 
-use warnings;
-use strict;
-
 # Other modules:
-use Module::Find;
-use Carp;
-use Class::MOP;
-use Try::Tiny;
-use List::MoreUtils qw/firstval/;
+use Class::Load qw/load_class/;
+use namespace::autoclean;
+use Moose;
 
 # Module implementation
 #
-sub new {
-    my ( $class, %arg ) = @_;
-    my $engine = $arg{engine} ? ucfirst lc( $arg{engine} ) : 'Generic';
-    my $package = firstval {/$engine$/}
-        findsubmod('Modware::DataSource::Chado::BCS::Engine');
-    croak "cannot find plugins for engine: $engine\n" if !$package;
-    try {
-        Class::MOP::load_class($package);
-    }
-    catch {
-        croak "Issue in loading $package $_\n";
-    };
-    return $package->new(%arg);
+
+has 'engine' => ( isa => 'Str',  is => 'rw');
+
+sub get_engine {
+    my ( $self, $engine ) = @_;
+    $engine  = $self->engine if !$engine;
+	die "need a engine name\n" if !$engine;
+
+	my $class_name = 'Modware::DataSource::Chado::BCS::Engine::'.ucfirst(lc $engine);
+	load_class($class_name);
+    return $class_name->new();
 }
+
+__PACKAGE__->meta->make_immutable;
 
 1;    # Magic true value required at end of module
 
@@ -42,7 +37,7 @@ Modware::Factory::Chado::BCS
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

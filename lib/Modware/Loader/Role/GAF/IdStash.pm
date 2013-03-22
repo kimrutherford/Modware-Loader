@@ -3,7 +3,7 @@ use strict;
 
 package Modware::Loader::Role::GAF::IdStash;
 {
-  $Modware::Loader::Role::GAF::IdStash::VERSION = '1.0.0';
+  $Modware::Loader::Role::GAF::IdStash::VERSION = '1.1.0';
 }
 
 use Moose::Role;
@@ -227,7 +227,7 @@ Modware::Loader::Role::GAF::IdStash
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

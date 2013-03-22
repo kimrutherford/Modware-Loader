@@ -7,6 +7,7 @@ MANIFEST.SKIP
 META.json
 META.yml
 bin/chado2dicty_gff3_parallel.sh
+bin/discoideum-split-canonical.pl
 bin/discoideum_tblastn_filter.pl
 bin/modware
 bin/modware-export
@@ -31,6 +32,7 @@ lib/Modware/EventHandler/FeatureReader/Chado/NonCoding/Dicty.pm
 lib/Modware/EventHandler/FeatureReader/Chado/Overlapping.pm
 lib/Modware/EventHandler/FeatureWriter/GFF3.pm
 lib/Modware/EventHandler/FeatureWriter/GFF3/Alignment.pm
+lib/Modware/EventHandler/FeatureWriter/GFF3/Alignment/Dicty.pm
 lib/Modware/EventHandler/FeatureWriter/GFF3/Canonical.pm
 lib/Modware/EventHandler/FeatureWriter/GFF3/Canonical/Dicty.pm
 lib/Modware/EventHandler/FeatureWriter/GFF3/NonCanonical/Dicty.pm
@@ -71,7 +73,6 @@ lib/Modware/Load/Command/adhocobo2chado.pm
 lib/Modware/Load/Command/bioportalobo2chado.pm
 lib/Modware/Load/Command/dictygaf2chado.pm
 lib/Modware/Load/Command/dropontofromchado.pm
-lib/Modware/Load/Command/ebigaf2chado.pm
 lib/Modware/Load/Command/gb2chado.pm
 lib/Modware/Load/Command/gbassembly2chado.pm
 lib/Modware/Load/Command/obo2chado.pm
@@ -114,6 +115,7 @@ lib/Modware/MooseX/ClearAfterAccess.pm
 lib/Modware/Report.pm
 lib/Modware/Report/Command.pm
 lib/Modware/Report/Command/sumstatsongff3.pm
+lib/Modware/Role/Chado/Cache.pm
 lib/Modware/Role/Chado/Helper/BCS/WithDataStash.pm
 lib/Modware/Role/Command/CanCompress.pm
 lib/Modware/Role/Command/Convert/Identifier.pm

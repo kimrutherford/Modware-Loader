@@ -1,6 +1,6 @@
 package Modware::Legacy::Schema::LocusGp;
 {
-  $Modware::Legacy::Schema::LocusGp::VERSION = '1.0.0';
+  $Modware::Legacy::Schema::LocusGp::VERSION = '1.1.0';
 }
 
 use strict;
@@ -45,7 +45,7 @@ Modware::Legacy::Schema::LocusGp
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

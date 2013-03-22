@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictynoncanonicalgff3;
 {
-  $Modware::Export::Command::chado2dictynoncanonicalgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictynoncanonicalgff3::VERSION = '1.1.0';
 }
 
 use strict;
@@ -76,10 +76,11 @@ sub execute {
     my $event = Modware::EventEmitter::Feature::Chado::Canonical->new(
         resource => $self->schema );
 
-    for my $name (qw/reference seq_id gene transcript exon/) {
+    for my $name (qw/reference seq_id gene exon/) {
         my $read_api = 'read_' . $name;
         $event->on( $read_api => sub { $read_handler->$read_api(@_) } );
     }
+    $event->on('read_transcript' => sub {$read_handler->read_transcript_by_source(@_)});
     $event->on(
         'write_transcript' => sub { $write_handler->write_transcript(@_) } );
     $event->on( 'write_exon' => sub { $write_handler->write_exon(@_) } );
@@ -115,7 +116,7 @@ Modware::Export::Command::chado2dictynoncanonicalgff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

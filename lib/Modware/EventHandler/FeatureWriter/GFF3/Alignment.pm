@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::Alignment;
 {
-  $Modware::EventHandler::FeatureWriter::GFF3::Alignment::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::Alignment::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -55,9 +55,7 @@ sub write_feature {
     my $floc_rs = $dbrow->featureloc_features( { rank => 0 } );
     my $floc_row;
     if ( $floc_row = $floc_rs->first ) {
-        $hashref->{start}  = $floc_row->fmin + 1;
-        $hashref->{end}    = $floc_row->fmax;
-        $hashref->{strand} = $floc_row->strand == -1 ? '-' : '+';
+    	$self->setup_feature_location($event, $floc_row, $hashref);
     }
     else {
         $event->output_logger->log(
@@ -154,9 +152,7 @@ sub write_subfeature {
         { order_by => { -asc => 'fmin' } } );
     my $floc_row;
     if ( $floc_row = $floc_rs->first ) {
-        $hashref->{start}  = $floc_row->fmin + 1;
-        $hashref->{end}    = $floc_row->fmax;
-        $hashref->{strand} = $floc_row->strand == -1 ? '-' : '+';
+    	$self->setup_subfeature_location($event, $floc_row, $hashref);
     }
     else {
         $event->output_logger->warn(
@@ -204,7 +200,7 @@ Modware::EventHandler::FeatureWriter::GFF3::Alignment
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

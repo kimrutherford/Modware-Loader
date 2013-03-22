@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::Canonical::Dicty;
 {
-  $Modware::EventHandler::FeatureWriter::GFF3::Canonical::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::Canonical::Dicty::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -31,7 +31,18 @@ sub write_transcript {
     my ( $self, $event, $seq_id, $parent_dbrow, $dbrow ) = @_;
     my $output  = $self->output;
     my $gene_id = $self->_chado_feature_id($parent_dbrow);
-    if ( $dbrow->type->name eq 'pseudogene' ) {
+    my $term;
+
+    #check cache
+    if ($event->has_cvrow_id($dbrow->type_id)) {
+    	$term = $event->get_cvrow_by_id($dbrow->type_id)->name;
+    }
+    else { #if not fills it up
+    	$term = $dbrow->type->name;
+    	$event->set_cvrow_by_id($dbrow->type_id, $dbrow->type);
+    }
+
+    if ( $term eq 'pseudogene' ) {
 
         # dicty pseudogene gene model have to be SO complaint
         # it writes gene and transcript feature
@@ -49,13 +60,13 @@ sub write_transcript {
     else {
 
         if ( !$self->has_gene_in_cache($gene_id) ) {
-            my $gene_hash = $self->_dbrow2gff3hash( $parent_dbrow, $seq_id );
+            my $gene_hash = $self->_dbrow2gff3hash( $parent_dbrow, $event,  $seq_id );
             $output->print( gff3_format_feature($gene_hash) );
             $self->add_gene_in_cache($gene_id, 1);
         }
 
         #transcript
-        my $trans_hash = $self->_dbrow2gff3hash( $dbrow, $seq_id, $gene_id );
+        my $trans_hash = $self->_dbrow2gff3hash( $dbrow, $event, $seq_id, $gene_id );
         $output->print( gff3_format_feature($trans_hash) );
     }
 }
@@ -65,12 +76,12 @@ sub write_exon {
     my $output   = $self->output;
     my $trans_id = $self->_chado_feature_id($parent_dbrow);
     my $hash;
-    if ( $parent_dbrow->type->name eq 'pseudogene' ) {
+    if ( $event->get_cvrow_by_id($parent_dbrow->type_id)->name eq 'pseudogene' ) {
         $hash = $self->pseudorow2gff3hash( $dbrow, $seq_id, $trans_id,
             'pseudogenic_exon' );
     }
     else {
-        $hash = $self->_dbrow2gff3hash( $dbrow, $seq_id, $trans_id );
+        $hash = $self->_dbrow2gff3hash( $dbrow, $event,  $seq_id, $trans_id );
     }
     $output->print( gff3_format_feature($hash) );
 }
@@ -139,7 +150,7 @@ Modware::EventHandler::FeatureWriter::GFF3::Canonical::Dicty
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

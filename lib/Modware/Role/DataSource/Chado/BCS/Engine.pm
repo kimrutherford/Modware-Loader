@@ -1,6 +1,6 @@
 package Modware::Role::DataSource::Chado::BCS::Engine;
 {
-  $Modware::Role::DataSource::Chado::BCS::Engine::VERSION = '1.0.0';
+  $Modware::Role::DataSource::Chado::BCS::Engine::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -29,7 +29,7 @@ Modware::Role::DataSource::Chado::BCS::Engine
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

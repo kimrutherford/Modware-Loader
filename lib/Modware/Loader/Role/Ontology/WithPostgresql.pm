@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::WithPostgresql;
 {
-  $Modware::Loader::Role::Ontology::WithPostgresql::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::WithPostgresql::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -48,7 +48,7 @@ Modware::Loader::Role::Ontology::WithPostgresql
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

@@ -1,6 +1,6 @@
 package Modware::Load::Types;
 {
-  $Modware::Load::Types::VERSION = '1.0.0';
+  $Modware::Load::Types::VERSION = '1.1.0';
 }
 
 use MooseX::Types -declare => [qw/DataDir DataFile FileObject Dsn DbObject ResultSet Row/];
@@ -34,7 +34,7 @@ Modware::Load::Types
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

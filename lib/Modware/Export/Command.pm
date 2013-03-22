@@ -1,6 +1,6 @@
 package Modware::Export::Command;
 {
-  $Modware::Export::Command::VERSION = '1.0.0';
+  $Modware::Export::Command::VERSION = '1.1.0';
 }
 
 use strict;
@@ -151,9 +151,11 @@ sub _build_chado {
     my ($self) = @_;
     my $schema = Bio::Chado::Schema->connect( $self->dsn, $self->user,
         $self->password, $self->attribute );
-    my $engine = Modware::Factory::Chado::BCS->new(
-        engine => $schema->storage->sqlt_type );
-    $engine->transform($schema);
+	#my $engine = Modware::Factory::Chado::BCS->new(
+	#    engine => $schema->storage->sqlt_type );
+	#$engine->transform($schema);
+	my $engine = Modware::Factory::Chado::BCS->new;
+	$engine->get_engine('Oracle')->transform($schema);
     return $schema;
 }
 
@@ -178,7 +180,7 @@ Modware::Export::Command
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 
