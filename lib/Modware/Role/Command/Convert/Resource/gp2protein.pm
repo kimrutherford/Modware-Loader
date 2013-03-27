@@ -1,6 +1,6 @@
 package Modware::Role::Command::Convert::Resource::gp2protein;
 {
-  $Modware::Role::Command::Convert::Resource::gp2protein::VERSION = '1.0.0';
+  $Modware::Role::Command::Convert::Resource::gp2protein::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -68,7 +68,7 @@ Modware::Role::Command::Convert::Resource::gp2protein
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

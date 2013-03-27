@@ -1,6 +1,6 @@
 package Modware::Legacy::Schema;
 {
-  $Modware::Legacy::Schema::VERSION = '1.0.0';
+  $Modware::Legacy::Schema::VERSION = '1.1.0';
 }
 
 use strict;
@@ -28,7 +28,7 @@ Modware::Legacy::Schema
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

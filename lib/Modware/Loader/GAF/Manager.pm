@@ -3,7 +3,7 @@ use strict;
 
 package Modware::Loader::GAF::Manager;
 {
-  $Modware::Loader::GAF::Manager::VERSION = '1.0.0';
+  $Modware::Loader::GAF::Manager::VERSION = '1.1.0';
 }
 
 use Data::Dumper;
@@ -180,7 +180,7 @@ Modware::Loader::GAF::Manager
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

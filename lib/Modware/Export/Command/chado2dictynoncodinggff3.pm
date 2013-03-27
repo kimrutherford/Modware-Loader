@@ -1,6 +1,6 @@
 package Modware::Export::Command::chado2dictynoncodinggff3;
 {
-  $Modware::Export::Command::chado2dictynoncodinggff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictynoncodinggff3::VERSION = '1.1.0';
 }
 
 use strict;
@@ -106,7 +106,7 @@ Modware::Export::Command::chado2dictynoncodinggff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

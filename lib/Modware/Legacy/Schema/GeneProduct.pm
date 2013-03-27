@@ -1,6 +1,6 @@
 package Modware::Legacy::Schema::GeneProduct;
 {
-  $Modware::Legacy::Schema::GeneProduct::VERSION = '1.0.0';
+  $Modware::Legacy::Schema::GeneProduct::VERSION = '1.1.0';
 }
 
 use strict;
@@ -61,7 +61,7 @@ Modware::Legacy::Schema::GeneProduct
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

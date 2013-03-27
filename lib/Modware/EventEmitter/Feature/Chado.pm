@@ -1,6 +1,6 @@
 package Modware::EventEmitter::Feature::Chado;
 {
-  $Modware::EventEmitter::Feature::Chado::VERSION = '1.0.0';
+  $Modware::EventEmitter::Feature::Chado::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -13,32 +13,66 @@ use MooseX::Event '-alias' => {
 };
 use Modware::Load::Types qw/DbObject/;
 with 'Modware::Role::Loggable';
+with 'Modware::Role::Chado::Cache';
 
 # Module implementation
 #
 
-has_events qw/write_meta_header write_header read_organism write_sequence_region/;
+has_events
+    qw/write_meta_header write_header read_organism write_sequence_region/;
 has_events qw/read_reference read_seq_id write_reference/;
 has_events qw/read_feature read_subfeature write_feature write_subfeature/;
 
-has 'resource' => ( is => 'rw', isa => 'Bio::Chado::Schema', required => 1 );
+has 'resource' => (
+    is       => 'rw',
+    isa      => 'Bio::Chado::Schema',
+    required => 1,
+    trigger  => sub {
+        my ( $self, $schema ) = @_;
+        $self->_cache_common_lookups($schema);
+    }
+);
+
 has 'response' => (
     is        => 'rw',
-    isa       => DbObject, 
+    isa       => DbObject,
     predicate => 'has_response',
-    traits => [qw/ClearAfterAccess/]
+    traits    => [qw/ClearAfterAccess/]
 );
 
 has 'response_id' => (
-    is      => 'rw',
-    isa     => 'Str',
+    is     => 'rw',
+    isa    => 'Str',
     traits => [qw/ClearAfterAccess/]
 );
 
 has 'msg' => ( is => 'rw', isa => 'Str' );
 
+
+sub _cache_common_lookups {
+    my ( $self, $schema ) = @_;
+    my $rs = $schema->resultset('Cv::Cvterm')->search(
+        {   'cv.name' => 'sequence',
+            'me.name' => {
+                -in => [
+                    qw/gene exon mRNA pseudogene contig chromosome pseudogenic_exon
+                        pseudogenic_transcript/
+                ]
+            }
+        },
+        { join => 'cv' }
+    );
+    my $cache = { map { $_->cvterm_id => $_ } $rs->all };
+    $self->_cvterm_id_stack($cache);
+
+    my $rs2 = $schema->resultset('General::Db')->search( {} );
+    my $cache2 = { map { $_->db_id => $_ } $rs2->all };
+    $self->_db_id_stack($cache2);
+
+}
+
 sub process {
-    my ($self, $log_level) = @_;
+    my ( $self, $log_level ) = @_;
 
     $self->log_level($log_level) if $log_level;
     $self->use_extended_layout(1);
@@ -90,7 +124,7 @@ REFERENCE:
             $logger->debug('finished read_subfeature event');
 
             while ( my $sfrow = $rs2->next ) {
-               $logger->debug('write_subfeature event');
+                $logger->debug('write_subfeature event');
                 $self->emit(
                     'write_subfeature' => ( $seq_id, $frow, $sfrow ) );
             }
@@ -110,7 +144,7 @@ Modware::EventEmitter::Feature::Chado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

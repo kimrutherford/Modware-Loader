@@ -1,6 +1,6 @@
 package Modware::Transform::Command::blast2chadogff3;
 {
-  $Modware::Transform::Command::blast2chadogff3::VERSION = '1.0.0';
+  $Modware::Transform::Command::blast2chadogff3::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -458,7 +458,7 @@ Modware::Transform::Command::blast2chadogff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

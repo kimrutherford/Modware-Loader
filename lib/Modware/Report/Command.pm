@@ -1,6 +1,6 @@
 package Modware::Report::Command;
 {
-  $Modware::Report::Command::VERSION = '1.0.0';
+  $Modware::Report::Command::VERSION = '1.1.0';
 }
 
 
@@ -25,7 +25,7 @@ Modware::Report::Command
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

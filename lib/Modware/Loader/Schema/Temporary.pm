@@ -1,12 +1,12 @@
 package Modware::Loader::Schema::Temporary;
 {
-  $Modware::Loader::Schema::Temporary::VERSION = '1.0.0';
+  $Modware::Loader::Schema::Temporary::VERSION = '1.1.0';
 }
 
 
 package Modware::Loader::Schema::Temporary::Cvterm;
 {
-  $Modware::Loader::Schema::Temporary::Cvterm::VERSION = '1.0.0';
+  $Modware::Loader::Schema::Temporary::Cvterm::VERSION = '1.1.0';
 }
 use strict;
 use base qw/DBIx::Class::Core/;
@@ -32,7 +32,7 @@ __PACKAGE__->add_columns(
 
 package Modware::Loader::Schema::Temporary::CvtermRelationship;
 {
-  $Modware::Loader::Schema::Temporary::CvtermRelationship::VERSION = '1.0.0';
+  $Modware::Loader::Schema::Temporary::CvtermRelationship::VERSION = '1.1.0';
 }
 use strict;
 use base qw/DBIx::Class::Core/;
@@ -56,7 +56,7 @@ __PACKAGE__->add_columns(
 
 package Modware::Loader::Schema::Temporary::Cvtermsynonym;
 {
-  $Modware::Loader::Schema::Temporary::Cvtermsynonym::VERSION = '1.0.0';
+  $Modware::Loader::Schema::Temporary::Cvtermsynonym::VERSION = '1.1.0';
 }
 use base qw/DBIx::Class::Core/;
 
@@ -82,7 +82,7 @@ Modware::Loader::Schema::Temporary
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 

@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2;
 {
-  $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -14,14 +14,14 @@ extends 'Modware::EventHandler::FeatureWriter::GFF3';
 
 sub write_feature {
     my ( $self, $event, $seq_id, $dbrow ) = @_;
-    my $hashref = $self->_dbrow2gff3hash( $dbrow, $seq_id );
+    my $hashref = $self->_dbrow2gff3hash( $dbrow, $event,  $seq_id );
     $self->output->print( gff3_format_feature($hashref) );
 }
 
 sub write_subfeature {
     my ( $self, $event, $seq_id, $parent, $dbrow ) = @_;
     my $parent_id = $self->_chado_feature_id($parent);
-    my $hashref = $self->_dbrow2gff3hash( $dbrow, $seq_id, $parent_id );
+    my $hashref = $self->_dbrow2gff3hash( $dbrow, $event, $seq_id, $parent_id );
     $self->output->print( gff3_format_feature($hashref) );
 }
 
@@ -37,7 +37,7 @@ Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::DictyV2
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

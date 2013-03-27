@@ -1,11 +1,12 @@
 package Modware::Export::Command::chado2dictycuratedgff3;
 {
-  $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.0.0';
+  $Modware::Export::Command::chado2dictycuratedgff3::VERSION = '1.1.0';
 }
 
 use strict;
 use namespace::autoclean;
 use Moose;
+use Modware::Factory::Chado::BCS;
 use Modware::EventEmitter::Feature::Chado::Canonical;
 use Modware::EventHandler::FeatureReader::Chado::Curated::Dicty;
 use Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty;
@@ -62,15 +63,9 @@ sub execute {
         = Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty->new(
         output => $self->output_handler );
 
-    my $source = $self->schema->source('Sequence::Feature');
-    $source->remove_column('is_obsolete');
-    $source->add_column(
-        'is_deleted' => {
-            data_type     => 'boolean',
-            is_nullable   => 0,
-            default_value => 'false'
-        }
-    );
+	my $fac = Modware::Factory::Chado::BCS->new;
+	$fac->get_engine('Oracle')->transform($self->schema);
+
     my $event = Modware::EventEmitter::Feature::Chado::Canonical->new(
         resource => $self->schema );
 
@@ -114,7 +109,7 @@ Modware::Export::Command::chado2dictycuratedgff3
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

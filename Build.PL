@@ -18,7 +18,7 @@ my %module_build_args = (
     "Siddhartha Basu <biosidd\@gmail.com>"
   ],
   "dist_name" => "Modware-Loader",
-  "dist_version" => "1.0.0",
+  "dist_version" => "1.1.0",
   "license" => "perl",
   "module_name" => "Modware::Loader",
   "recommends" => {
@@ -51,6 +51,7 @@ my %module_build_args = (
   },
   "script_files" => [
     "bin/chado2dicty_gff3_parallel.sh",
+    "bin/discoideum-split-canonical.pl",
     "bin/discoideum_tblastn_filter.pl",
     "bin/modware",
     "bin/modware-export",
@@ -58,6 +59,7 @@ my %module_build_args = (
     "bin/modware-transform",
     "bin/modware-update",
     "bin/chado2dicty_gff3_parallel.sh",
+    "bin/discoideum-split-canonical.pl",
     "bin/discoideum_tblastn_filter.pl",
     "bin/modware",
     "bin/modware-export",

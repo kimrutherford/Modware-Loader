@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::WithOracle;
 {
-  $Modware::Loader::Role::Ontology::WithOracle::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::WithOracle::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -75,7 +75,7 @@ Modware::Loader::Role::Ontology::WithOracle
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

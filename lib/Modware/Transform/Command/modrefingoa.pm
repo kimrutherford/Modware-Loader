@@ -1,6 +1,6 @@
 package Modware::Transform::Command::modrefingoa;
 {
-  $Modware::Transform::Command::modrefingoa::VERSION = '1.0.0';
+  $Modware::Transform::Command::modrefingoa::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -99,7 +99,7 @@ Modware::Transform::Command::modrefingoa
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 NAME
 

@@ -3,7 +3,7 @@ use strict;
 
 package Modware::Load::Command::dictygaf2chado;
 {
-  $Modware::Load::Command::dictygaf2chado::VERSION = '1.0.0';
+  $Modware::Load::Command::dictygaf2chado::VERSION = '1.1.0';
 }
 
 use Moose;
@@ -105,7 +105,7 @@ Modware::Load::Command::dictygaf2chado
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

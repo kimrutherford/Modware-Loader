@@ -1,56 +1,22 @@
-package Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty;
+package Modware::EventHandler::FeatureWriter::GFF3::Alignment::Dicty;
 {
-  $Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty::VERSION = '1.1.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::Alignment::Dicty::VERSION = '1.1.0';
 }
 
 # Other modules:
 use namespace::autoclean;
 use Moose;
-extends 'Modware::EventHandler::FeatureReader::Chado';
-with 'Modware::Role::EventHandler::Genome::Chado';
+extends 'Modware::EventHandler::FeatureWriter::GFF3::Alignment';
 
 # Module implementation
 #
 
-has 'feature_type' =>
-    ( is => 'rw', isa => 'Str', default => 'mRNA', lazy => 1 );
-has 'subfeature_type' =>
-    ( is => 'rw', isa => 'Str', default => 'exon', lazy => 1 );
-has 'source' =>
-    ( is => 'rw', isa => 'Str', default => 'geneID reprediction', lazy => 1 );
-
-sub read_feature {
-    my ( $self, $event, $dbrow ) = @_;
-    my $rs
-        = $dbrow->search_related( 'featureloc_srcfeatures', {} )
-        ->search_related(
-        'feature',
-        {   'type.name'        => $self->feature_type,
-            'db.name'          => 'GFF_source',
-            'dbxref.accession' => $self->source, 
-            'is_deleted' => 0
-        },
-        { join => [ 'type', { 'feature_dbxrefs' => { 'dbxref' => 'db' } } ] }
-        );
-    $event->response($rs);
-
+sub setup_feature_location {
+    my ( $self, $event, $dbrow, $hashref ) = @_;
+    $hashref->{start}  = $hashref->{source} eq 'Hideko' ? $dbrow->fmin : $dbrow->fmin + 1;
+    $hashref->{end}    = $dbrow->fmax;
+    $hashref->{strand} = $dbrow->strand == -1 ? '-' : '+';
 }
-
-sub read_subfeature {
-    my ( $self, $event, $dbrow ) = @_;
-    my $rs = $dbrow->search_related(
-        'feature_relationship_objects',
-        { 'type.name' => 'part_of' },
-        { join        => 'type' }
-        )->search_related(
-        'subject',
-        { 'type_2.name' => $self->subfeature_type },
-        { join          => 'type' }
-        );
-    $event->response($rs);
-}
-
-__PACKAGE__->meta->make_immutable;
 
 1;    # Magic true value required at end of module
 
@@ -60,7 +26,7 @@ __END__
 
 =head1 NAME
 
-Modware::EventHandler::FeatureReader::Chado::NonCanonical::Dicty
+Modware::EventHandler::FeatureWriter::GFF3::Alignment::Dicty
 
 =head1 VERSION
 

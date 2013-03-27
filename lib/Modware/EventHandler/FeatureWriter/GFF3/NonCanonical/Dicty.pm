@@ -1,6 +1,6 @@
 package Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty;
 {
-  $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty::VERSION = '1.0.0';
+  $Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty::VERSION = '1.1.0';
 }
 
 # Other modules:
@@ -26,7 +26,7 @@ sub write_transcript {
     }
     else {
         #transcript
-        my $trans_hash = $self->_dbrow2gff3hash( $dbrow, $seq_id, $gene_id );
+        my $trans_hash = $self->_dbrow2gff3hash( $dbrow, $event,  $seq_id, $gene_id );
         delete $trans_hash->{attributes}->{Parent};
         $output->print( gff3_format_feature($trans_hash) );
     }
@@ -44,7 +44,7 @@ Modware::EventHandler::FeatureWriter::GFF3::NonCanonical::Dicty
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 SYNOPSIS
 

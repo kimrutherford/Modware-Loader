@@ -1,6 +1,6 @@
 package Modware::Loader::Role::Ontology::Temp::Generic;
 {
-  $Modware::Loader::Role::Ontology::Temp::Generic::VERSION = '1.0.0';
+  $Modware::Loader::Role::Ontology::Temp::Generic::VERSION = '1.1.0';
 }
 
 use namespace::autoclean;
@@ -151,7 +151,7 @@ Modware::Loader::Role::Ontology::Temp::Generic
 
 =head1 VERSION
 
-version 1.0.0
+version 1.1.0
 
 =head1 AUTHOR
 
