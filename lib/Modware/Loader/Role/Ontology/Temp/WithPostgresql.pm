@@ -1,4 +1,4 @@
-package Modware::Loader::Role::Ontology::Chado::WithPostgresql;
+package Modware::Loader::Role::Ontology::Temp::WithPostgresql;
 
 # Other modules:
 use namespace::autoclean;
@@ -7,27 +7,9 @@ with 'Modware::Loader::Role::Ontology::Temp::Generic';
 
 # Module implementation
 #
+has cache_threshold =>
+    ( is => 'rw', isa => 'Int', lazy => 1, default => 4000 );
 
-after 'load_data_in_staging' => sub {
-    my ($self) = @_;
-    $self->schema->storage->dbh_do(
-        sub {
-            my ( $storage, $dbh ) = @_;
-            $dbh->do(
-                q{CREATE UNIQUE INDEX uniq_name_idx ON temp_cvterm(name,  is_obsolete,  cv_id)}
-            );
-            $dbh->do(
-                q{CREATE UNIQUE INDEX uniq_accession_idx ON temp_cvterm(accession)}
-            );
-        }
-    );
-
-    $self->logger->debug(
-        sprintf "terms:%d\tsynonyms:%d\trelationships:%d in staging tables",
-        $self->entries_in_staging('TempCvterm'),
-        $self->entries_in_staging('TempCvtermRelationship')
-    );
-};
 
 sub create_temp_statements {
     my ( $self, $storage ) = @_;
@@ -55,13 +37,46 @@ sub create_temp_statements {
                type_db_id integer NOT NULL
     )}
     );
+   $storage->dbh->do(qq{
+	        CREATE TEMP TABLE temp_cvterm_synonym (
+               accession varchar(256) NOT NULL, 
+               syn varchar(1024) NOT NULL, 
+               syn_scope_id integer NOT NULL, 
+               db_id integer NOT NULL
+    )}
+    );
+
     $storage->dbh->do(qq{ANALYZE  cvterm});
     $storage->dbh->do(qq{ANALYZE dbxref});
 }
 
+
 sub drop_temp_statements {
-    my ( $self, $storage ) = @_;
 }
+
+after 'load_data_in_staging' => sub {
+    my ($self) = @_;
+    $self->schema->storage->dbh_do(
+        sub {
+            my ( $storage, $dbh ) = @_;
+            $dbh->do(
+                q{CREATE UNIQUE INDEX uniq_name_idx ON temp_cvterm(name,  is_obsolete,  cv_id)}
+            );
+            $dbh->do(
+                q{CREATE UNIQUE INDEX uniq_accession_idx ON temp_cvterm(accession)}
+            );
+        }
+    );
+
+    $self->logger->debug(
+        sprintf "terms:%d\tsynonyms:%d\trelationships:%d in staging tables",
+        $self->entries_in_staging('TempCvterm'),
+        $self->entries_in_staging('TempCvtermsynonym'),
+        $self->entries_in_staging('TempCvtermRelationship')
+    );
+};
+
+
 
 1;    # Magic true value required at end of module
 
