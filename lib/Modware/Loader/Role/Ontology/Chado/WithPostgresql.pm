@@ -130,8 +130,9 @@ sub update_cvterm_names {
     	) AS fresh
     	WHERE fresh.fname != fresh.oname
     	AND cvterm.cvterm_id = fresh.cvterm_id
-    });
-    return  $row;
+    }
+    );
+    return $row;
 }
 
 sub update_cvterms {
@@ -149,8 +150,9 @@ sub update_cvterms {
     		 	dbxref.db_id = tmcv.db_id
     		 ) ) AS fresh
     		WHERE cvterm.cvterm_id = fresh.cvterm_id
-    });
-    return  $row;
+    }
+    );
+    return $row;
 }
 
 sub merge_comments {
@@ -197,7 +199,7 @@ sub create_synonyms {
     my ( $self, $storage, $dbh ) = @_;
     my $row = $dbh->do(
         q{
-	    INSERT INTO cvtermsynonym(synonym_, type_id, cvterm_id)
+	    INSERT INTO cvtermsynonym(synonym, type_id, cvterm_id)
 		SELECT tsyn.syn, tsyn.syn_scope_id, cvterm.cvterm_id
 		FROM temp_cvterm_synonym tsyn
 		INNER JOIN temp_accession tmacc ON
@@ -266,8 +268,6 @@ sub update_synonyms {
     $self->logger->debug("updated $rows synonyms");
     return $rows;
 }
-
-
 
 1;    # Magic true value required at end of module
 
