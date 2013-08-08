@@ -14,19 +14,29 @@ sub execute {
 
     my ($self) = @_;
 
-    my $stock_rs = $self->schema->resultset('Stock::Stock')
-        ->search( { 'type.name' => 'strain' }, { join => 'type' } );
+    my $guard = $self->schema->txn_scope_guard;
 
-    my $hash;
+    my $type_id = $self->schema->resultset('Cv::Cvterm')
+        ->search( { name => 'strain' }, {} )->first->cvterm_id;
+
     my $io = IO::File->new( $self->input, 'r' );
+    my $hash;
     while ( my $line = $io->getline ) {
         my @cols = split( /\t/, $line );
         $hash->{uniquename}  = $cols[0] if $cols[0] =~ /^DBS[0-9]{7}/;
         $hash->{name}        = $cols[1];
-        $hash->{organism_id} = $self->find_or_create_organism( $cols[2] ) if $cols[2];
-        print $hash->{uniquename} . "\t" . $hash->{organism_id} . "\n";
+        $hash->{organism_id} = $self->find_or_create_organism( $cols[2] )
+            if $cols[2];
+        $hash->{description} = $self->trim( $cols[3] );
+        $hash->{type_id}     = $type_id;
+        $self->schema->resultset('Stock::Stock')->create($hash);
+        print $hash->{uniquename} . "\t"
+            . $hash->{organism_id} . "\t"
+            . $type_id . "\n";
     }
 
+    $guard->commit;
+    $self->schema->storage->disconnect;
 }
 
 1;
