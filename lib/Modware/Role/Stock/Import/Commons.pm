@@ -6,6 +6,53 @@ package Modware::Role::Stock::Import::Commons;
 use Moose::Role;
 use namespace::autoclean;
 
+has 'db' => ( is => 'rw', isa => 'Str', default => 'internal' );
+has 'cv' => ( is => 'rw', isa => 'Str', default => 'dicty_stockcenter' );
+
+before 'execute' => sub {
+    my ($self) = @_;
+
+    my $dictystock_rs = $self->schema->resultset('Cv::Cvterm')->search(
+        {   'me.name' => { -in => [qw/strain plasmid/] },
+            'cv.name' => $self->cv
+        },
+        { join => 'cv' }
+    );
+    if ( $dictystock_rs->count == 0 ) {
+        $self->logger->info(
+            'Creating dicty_stockcenter namespace in cv & cvterm');
+        my $cv_stock_rs
+            = $self->schema->resultset('Cv::Cv')
+            ->find_or_create( { name => $self->cv } );
+        foreach my $stock (qw/strain plasmid/) {
+            $cv_stock_rs->create_related(
+                'cvterms',
+                {   name      => $stock,
+                    dbxref_id => $self->find_or_create_dbxref($stock)
+                },
+            );
+        }
+    }
+};
+
+sub find_or_create_dbxref {
+    my ( $self, $accession ) = @_;
+    my $dbxref_rs
+        = $self->schema->resultset('General::Dbxref')->find_or_create(
+        {   accession => $accession,
+            db_id     => $self->find_or_create_db()
+        }
+        );
+    return $dbxref_rs->dbxref_id;
+}
+
+sub find_or_create_db {
+    my ($self) = @_;
+    my $db_rs = $self->schema->resultset('General::Db')
+        ->find_or_create( { name => $self->db } );
+    return $db_rs->db_id;
+}
+
 has '_organism_row' => (
     is      => 'rw',
     isa     => 'HashRef',
@@ -45,6 +92,13 @@ sub find_or_create_organism {
         $self->set_organism_row( $species, $new_organism_row );
         return $self->get_organism_row($species)->organism_id;
     }
+}
+
+sub trim {
+    my ( $self, $s ) = @_;
+    $s =~ s/^\s+//;
+    $s =~ s/\s+$//;
+    return $s;
 }
 
 1;
