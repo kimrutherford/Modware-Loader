@@ -13,7 +13,7 @@ before 'execute' => sub {
     my ($self) = @_;
 
     my $dictystock_rs = $self->schema->resultset('Cv::Cvterm')->search(
-        {   'me.name' => { -in => [qw/strain plasmid/] },
+        {   'me.name' => { -in => [qw/strain plasmid characteristics/] },
             'cv.name' => $self->cv
         },
         { join => 'cv' }
@@ -24,7 +24,7 @@ before 'execute' => sub {
         my $cv_stock_rs
             = $self->schema->resultset('Cv::Cv')
             ->find_or_create( { name => $self->cv } );
-        foreach my $stock (qw/strain plasmid/) {
+        foreach my $stock (qw/strain plasmid characteristics/) {
             $cv_stock_rs->create_related(
                 'cvterms',
                 {   name      => $stock,
@@ -91,6 +91,59 @@ sub find_or_create_organism {
             );
         $self->set_organism_row( $species, $new_organism_row );
         return $self->get_organism_row($species)->organism_id;
+    }
+}
+
+has '_pub_row' => (
+    is      => 'rw',
+    isa     => 'HashRef',
+    traits  => [qw/Hash/],
+    default => sub { {} },
+    handles => {
+        set_pub_row => 'set',
+        get_pub_row => 'get',
+        has_pub_row => 'defined'
+    }
+);
+
+sub find_pub {
+    my ( $self, $pmid ) = @_;
+    if ( $self->has_pub_row($pmid) ) {
+        return $self->get_pub_row($pmid)->pub_id;
+    }
+    my $row
+        = $self->schema->resultset('Pub::Pub')
+        ->search( { uniquename => $pmid },
+        { select => [qw/pub_id uniquename/] } );
+    if ( $row->count > 0 ) {
+        $self->set_pub_row( $pmid, $row->first );
+        return $self->get_pub_row($pmid)->pub_id;
+    }
+}
+
+has '_cvterm_row' => (
+    is      => 'rw',
+    isa     => 'HashRef',
+    traits  => [qw/Hash/],
+    default => sub { {} },
+    handles => {
+        set_cvterm_row => 'set',
+        get_cvterm_row => 'get',
+        has_cvterm_row => 'defined'
+    }
+);
+
+sub find_cvterm {
+    my ( $self, $name ) = @_;
+    if ( $self->has_cvterm_row($name) ) {
+        return $self->get_cvterm_row($name)->cvterm_id;
+    }
+    my $row
+        = $self->schema->resultset('Cv::Cvterm')
+        ->search( { name => $name }, { select => [qw/cvterm_id name/] } );
+    if ( $row->count > 0 ) {
+        $self->set_cvterm_row( $name, $row->first );
+        return $self->get_cvterm_row($name)->cvterm_id;
     }
 }
 
