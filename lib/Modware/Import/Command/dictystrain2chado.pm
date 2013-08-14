@@ -10,11 +10,23 @@ extends qw/Modware::Import::Command/;
 with 'Modware::Role::Command::WithLogger';
 with 'Modware::Role::Stock::Import::Strain';
 
+has 'prune' => ( is => 'rw', isa => 'Bool', default => 0 );
+
 sub execute {
 
     my ($self) = @_;
 
     my $guard = $self->schema->txn_scope_guard;
+
+    if ( $self->prune ) {
+        $self->schema->storage->dbh_do(
+            sub {
+                my ( $storage, $dbh ) = @_;
+                my $sth = $dbh->prepare(qq{DELETE FROM stock});
+                $sth->execute;
+            }
+        );
+    }
 
     my $type_id = $self->schema->resultset('Cv::Cvterm')
         ->search( { name => 'strain' }, {} )->first->cvterm_id;
