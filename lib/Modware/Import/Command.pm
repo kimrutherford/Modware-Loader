@@ -28,6 +28,22 @@ has '+configfile' => (
     default       => sub { return undef }
 );
 
+has 'data_dir' => (
+    is          => 'rw',
+    isa         => 'DataDir',
+    traits      => [qw/Getopt/],
+    cmd_flag    => 'dir',
+    cmd_aliases => 'd',
+    documentation =>
+        'Folder under which input and output files can be configured to be written',
+    builder => '_build_data_dir',
+    lazy    => 1
+);
+
+sub _build_data_dir {
+    return rel2abs(cwd);
+}
+
 has 'input' => (
     is            => 'rw',
     isa           => 'DataFile',
@@ -72,10 +88,6 @@ sub _build_chado {
     my $schema = Bio::Chado::Schema->connect( $self->dsn, $self->user,
         $self->password );
     return $schema;
-}
-
-sub _build_data_dir {
-    return rel2abs(cwd);
 }
 
 sub get_config_from_file {
