@@ -3,6 +3,7 @@ use strict;
 
 package Modware::Import::Command::dictystrain2chado;
 
+use Data::Dumper;
 use Moose;
 use namespace::autoclean;
 
@@ -13,9 +14,10 @@ with 'Modware::Role::Stock::Import::Strain';
 has 'prune' => ( is => 'rw', isa => 'Bool', default => 0 );
 
 has data => (
-    is      => 'rw',
-    isa     => 'ArrayRef',
-    default => sub { [qw/characteristics publications inventory/] }
+    is  => 'rw',
+    isa => 'ArrayRef',
+    default =>
+        sub { [qw/characteristics publications inventory genotype props/] }
 );
 
 sub execute {
@@ -32,6 +34,10 @@ sub execute {
                 $sth->execute;
                 $sth = $dbh->prepare(qq{DELETE FROM stockprop});
                 $sth->execute;
+                $sth = $dbh->prepare(qq{DELETE FROM stock_genotype});
+                $sth->execute;
+                $sth = $dbh->prepare(qq{DELETE FROM genotype});
+                $sth->execute;
             }
         );
     }
@@ -41,6 +47,8 @@ sub execute {
 
     my $io = IO::File->new( $self->input, 'r' );
     my $hash;
+    my $stockprop_data;
+
     while ( my $line = $io->getline ) {
         my @cols = split( /\t/, $line );
         $hash->{uniquename}  = $cols[0] if $cols[0] =~ /^DBS[0-9]{7}/;
@@ -59,11 +67,10 @@ sub execute {
             foreach my $characteristics (
                 @{ $self->get_characteristics( $hash->{uniquename} ) } )
             {
-                # print $hash->{uniquename} . "\t" . $characteristics;
                 $stock_rs->create_related(
                     'stockprops',
                     {   type_id => $char_type_id,
-                        value   => $characteristics,
+                        value   => $self->trim($characteristics),
                         rank    => $rank
                     }
                 );
@@ -72,7 +79,6 @@ sub execute {
         }
 
         if ( $self->has_publications( $hash->{uniquename} ) ) {
-
             foreach my $pmid (
                 @{ $self->get_publications( $hash->{uniquename} ) } )
             {
@@ -96,16 +102,51 @@ sub execute {
                 foreach my $key ( keys $inventory ) {
                     my $type = $key;
                     $type =~ s/_/ /g if $type =~ /_/;
-                    # print $type. "\t" . $inventory->{$key} . "\n";
+
                     $stock_rs->create_related(
                         'stockprops',
                         {   type_id => $self->find_cvterm($type),
-                            value   => $inventory->{$key},
+                            value   => $self->trim( $inventory->{$key} ),
                             rank    => $rank
                         }
                     ) if $inventory->{$key};
                 }
                 $rank = $rank + 1;
+            }
+        }
+
+        if ( $self->has_genotype( $hash->{uniquename} ) ) {
+            my $genotype = @{ $self->get_genotype( $hash->{uniquename} ) }[0];
+            my ( $key, $value ) = each %$genotype;
+            my $genotype_type_id = $self->find_cvterm('genotype');
+            my $genotype_rs
+                = $self->schema->resultset('Genetic::Genotype')->create(
+                {   name       => $self->trim($value),
+                    uniquename => $self->trim($key),
+                    type_id    => $genotype_type_id
+                }
+                );
+            $stock_rs->create_related( 'stock_genotypes',
+                { genotype_id => $genotype_rs->genotype_id } );
+        }
+
+        if ( $self->has_props( $hash->{uniquename} ) ) {
+            my $rank;
+            my $previous_type = '';
+            my @props         = @{ $self->get_props( $hash->{uniquename} ) };
+            foreach my $prop (@props) {
+                my ( $key, $value ) = each %$prop;
+                $rank = 0 if $previous_type ne $key;
+                my $props_type_id = $self->find_cvterm($key);
+                $stock_rs->create_related(
+                    'stockprops',
+                    {   type_id => $props_type_id,
+                        value   => $self->trim($value),
+                        rank    => $rank
+                    }
+                );
+                $rank          = $rank + 1;
+                $previous_type = $key;
             }
         }
 
