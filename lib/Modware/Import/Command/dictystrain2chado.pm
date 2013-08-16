@@ -1,7 +1,7 @@
 
-use strict;
-
 package Modware::Import::Command::dictystrain2chado;
+
+use strict;
 
 use Data::Dumper;
 use Moose;
@@ -38,6 +38,7 @@ sub execute {
                 $sth->execute;
                 $sth = $dbh->prepare(qq{DELETE FROM genotype});
                 $sth->execute;
+                $sth->finish();
             }
         );
     }
@@ -47,7 +48,6 @@ sub execute {
 
     my $io = IO::File->new( $self->input, 'r' );
     my $hash;
-    my $stockprop_data;
 
     while ( my $line = $io->getline ) {
         my @cols = split( /\t/, $line );
@@ -61,21 +61,29 @@ sub execute {
         my $stock_rs
             = $self->schema->resultset('Stock::Stock')->create($hash);
 
-        if ( $self->has_characteristics( $hash->{uniquename} ) ) {
-            my $rank         = 0;
-            my $char_type_id = $self->find_cvterm('characteristics');
-            foreach my $characteristics (
-                @{ $self->get_characteristics( $hash->{uniquename} ) } )
-            {
-                $stock_rs->create_related(
-                    'stockprops',
-                    {   type_id => $char_type_id,
-                        value   => $self->trim($characteristics),
-                        rank    => $rank
-                    }
-                );
-                $rank = $rank + 1;
+        my $strain_char_pub_uniquename = '';
+        my $char_pub_id = $self->find_pub($strain_char_pub_uniquename);
+
+        if ($char_pub_id) {
+            if ( $self->has_characteristics( $hash->{uniquename} ) ) {
+                foreach my $characteristics (
+                    @{ $self->get_characteristics( $hash->{uniquename} ) } )
+                {
+                    my $char_type_id
+                        = $self->find_cvterm( $self->trim($characteristics) );
+                    $stock_rs->create_related(
+                        'stock_cvterms',
+                        {   type_id => $char_type_id,
+                            pub_id  => $char_pub_id
+                        }
+                    );
+                }
             }
+        }
+        else {
+            $self->logger->warn(
+                "Strain characteristics cannot be loaded. Required reference missing"
+            );
         }
 
         if ( $self->has_publications( $hash->{uniquename} ) ) {
@@ -105,7 +113,7 @@ sub execute {
 
                     $stock_rs->create_related(
                         'stockprops',
-                        {   type_id => $self->find_cvterm($type),
+                        {   type_id => $self->find_cvterm($type, 'strain_inventory'),
                             value   => $self->trim( $inventory->{$key} ),
                             rank    => $rank
                         }
@@ -117,7 +125,7 @@ sub execute {
 
         if ( $self->has_genotype( $hash->{uniquename} ) ) {
             my $genotype = @{ $self->get_genotype( $hash->{uniquename} ) }[0];
-            my ( $key, $value ) = each %$genotype;
+            my ( $key, $value ) = each %{$genotype};
             my $genotype_type_id = $self->find_cvterm('genotype');
             my $genotype_rs
                 = $self->schema->resultset('Genetic::Genotype')->create(
@@ -135,7 +143,7 @@ sub execute {
             my $previous_type = '';
             my @props         = @{ $self->get_props( $hash->{uniquename} ) };
             foreach my $prop (@props) {
-                my ( $key, $value ) = each %$prop;
+                my ( $key, $value ) = each %{$prop};
                 $rank = 0 if $previous_type ne $key;
                 my $props_type_id = $self->find_cvterm($key);
                 $stock_rs->create_related(
@@ -154,6 +162,8 @@ sub execute {
 
     $guard->commit;
     $self->schema->storage->disconnect;
+
+    return;
 }
 
 1;
@@ -164,8 +174,9 @@ __END__
 
 Modware::Import::Command::dictystrain2chado - Command to import strain data from dicty stock 
 
+=head1 VERSION
 =head1 SYNOPSIS
-
 =head1 DESCRIPTION
-
+=head1 AUTHOR
+=head1 LICENSE AND COPYRIGHT
 =cut
