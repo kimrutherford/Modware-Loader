@@ -69,6 +69,18 @@ has '_props' => (
     }
 );
 
+has '_phenotype' => (
+    is      => 'rw',
+    isa     => 'HashRef',
+    traits  => [qw/Hash/],
+    default => sub { {} },
+    handles => {
+        set_phenotype => 'set',
+        get_phenotype => 'get',
+        has_phenotype => 'defined'
+    }
+);
+
 before 'execute' => sub {
     my ($self) = @_;
 
@@ -99,6 +111,14 @@ before 'execute' => sub {
             if ( $data eq 'genotype' or $data eq 'props' ) {
                 push $self->$get_method( $array[0] ),
                     { $array[1] => $array[2] };
+                next;
+            }
+            if ( $data eq 'phenotype' ) {
+                my @row;
+                for my $position ( 1, 2, 3 ) {
+                    push @row, $array[$position];
+                }
+                push $self->$get_method( $array[0] ), @row;
                 next;
             }
             push $self->$get_method( $array[0] ), $array[1];

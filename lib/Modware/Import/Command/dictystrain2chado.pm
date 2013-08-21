@@ -17,7 +17,8 @@ has data => (
     is  => 'rw',
     isa => 'ArrayRef',
     default =>
-        sub { [qw/characteristics publications inventory genotype props/] }
+        # sub { [qw/characteristics publications inventory genotype props/] }
+        sub { [qw/phenotype/] }
 );
 
 sub execute {
@@ -113,9 +114,11 @@ sub execute {
 
                     $stock_rs->create_related(
                         'stockprops',
-                        {   type_id => $self->find_cvterm($type, 'strain_inventory'),
-                            value   => $self->trim( $inventory->{$key} ),
-                            rank    => $rank
+                        {   type_id => $self->find_cvterm(
+                                $type, 'strain_inventory'
+                            ),
+                            value => $self->trim( $inventory->{$key} ),
+                            rank  => $rank
                         }
                     ) if $inventory->{$key};
                 }
@@ -156,6 +159,11 @@ sub execute {
                 $rank          = $rank + 1;
                 $previous_type = $key;
             }
+        }
+
+        if ( $self->has_phenotype( $hash->{uniquename} ) ) {
+            my @phenotype_data = $self->get_phenotype( $hash->{uniquename} );
+            print "$hash->{uniquename}\t@phenotype_data\n";
         }
 
     }
