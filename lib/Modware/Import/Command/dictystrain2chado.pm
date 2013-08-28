@@ -17,6 +17,7 @@ has data => (
     is  => 'rw',
     isa => 'ArrayRef',
     default =>
+
         # sub { [qw/characteristics publications inventory genotype props/] }
         sub { [qw/phenotype/] }
 );
@@ -163,7 +164,29 @@ sub execute {
 
         if ( $self->has_phenotype( $hash->{uniquename} ) ) {
             my @phenotype_data = $self->get_phenotype( $hash->{uniquename} );
-            print "$hash->{uniquename}\t@phenotype_data\n";
+            for my $i ( 0 .. scalar(@phenotype_data) - 1 ) {
+                my $phenotype_term  = $phenotype_data[$i][0];
+                my $phenotype_env   = $phenotype_data[$i][1];
+                my $phenotype_assay = $phenotype_data[$i][2];
+                my $phenotype_pmid  = $self->trim( $phenotype_data[$i][3] );
+
+                # my $s = sprintf "%s\t%s\t%s\t%s\t%s\n", $hash->{uniquename},
+                #     $phenotype_term, $phenotype_env, $phenotype_assay,
+                #     $phenotype_pmid;
+                # print $s;
+
+              # my $env_id = $self->find_or_create_environment($phenotype_env)
+              #     if $phenotype_env;
+
+                # print $phenotype_env. "\t" . $env_id . "\n" if $env_id;
+
+                my $phenotype_id
+                    = $self->find_or_create_phenotype( $phenotype_term,
+                    $phenotype_assay )
+                    if $phenotype_term;
+                print $phenotype_term. "\t" . $phenotype_id . "\n"
+                    if $phenotype_id;
+            }
         }
 
     }
