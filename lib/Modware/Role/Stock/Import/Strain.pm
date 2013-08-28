@@ -8,6 +8,7 @@ use Moose::Role;
 use namespace::autoclean;
 
 with 'Modware::Role::Stock::Import::Commons';
+with 'Modware::Role::Stock::Import::Strain::Phenotype';
 
 has '_characteristics' => (
     is      => 'rw',
@@ -115,7 +116,7 @@ before 'execute' => sub {
             }
             if ( $data eq 'phenotype' ) {
                 my @row;
-                for my $position ( 1, 2, 3 ) {
+                for my $position ( 1, 2, 3, 4 ) {
                     push @row, $array[$position];
                 }
                 push $self->$get_method( $array[0] ), @row;
