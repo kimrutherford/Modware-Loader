@@ -52,6 +52,7 @@ sub find_or_create_environment {
 
 sub find_or_create_phenotype {
     my ( $self, $phenotype_term, $assay ) = @_;
+    print $phenotype_term. "\n";
     if ( $self->has_phenotype($phenotype_term) ) {
         return $self->get_phenotype($phenotype_term)->phenotype_id;
     }
