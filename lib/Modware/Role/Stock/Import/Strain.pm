@@ -127,6 +127,33 @@ before 'execute' => sub {
     }
 };
 
+has '_strain_genotype' => (
+    is      => 'rw',
+    isa     => 'HashRef',
+    traits  => [qw/Hash/],
+    default => sub { {} },
+    handles => {
+        set_strain_genotype => 'set',
+        get_strain_genotype => 'get',
+        has_strain_genotype => 'defined'
+    }
+);
+
+sub find_genotype {
+    my ( $self, $dbs_id ) = @_;
+    if ( $self->has_strain_genotype($dbs_id) ) {
+        return $self->get_strain_genotype($dbs_id)->genotype_id;
+    }
+    my $row
+        = $self->schema->resultset('Stock::StockGenotype')
+        ->search( { 'stock.uniquename' => $dbs_id },
+        { select => 'me.genotype_id', join => 'stock' } );
+    if ($row) {
+        $self->set_strain_genotype( $dbs_id, $row->first );
+        return $self->get_strain_genotype($dbs_id);
+    }
+}
+
 1;
 
 __END__

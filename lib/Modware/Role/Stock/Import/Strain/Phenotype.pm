@@ -52,20 +52,20 @@ sub find_or_create_environment {
 
 sub find_or_create_phenotype {
     my ( $self, $phenotype_term, $assay ) = @_;
-    print $phenotype_term. "\n";
     if ( $self->has_phenotype($phenotype_term) ) {
         return $self->get_phenotype($phenotype_term)->phenotype_id;
     }
     my $cvterm_phenotype
         = $self->find_cvterm( $phenotype_term, "Dicty Phenotypes" );
     if ( !$cvterm_phenotype ) {
-        my $msg = "Dicty phenotype ontology not loaded!";
-        $self->logger->warn($msg);
-        croak $msg;
+		#$self->logger->logdie(
+		#    "Couldn't find \"$phenotype_term\" in Dicty phenotype ontology");
+        return;
     }
-    my $cvterm_assay = $self->find_cvterm( $assay, "Dictyostelium Assay" );
-    if ( !$cvterm_assay ) {
-        my $msg = "Dicty assay ontology not loader";
+    my $cvterm_assay = $self->find_cvterm( $assay, "Dictyostelium Assay" )
+        if $assay;
+    if ( !$cvterm_assay and $assay ) {
+        my $msg = "Couldn't find \"$assay\" in Dicty assay ontology";
         $self->logger->warn($msg);
     }
     my $phenotype_hash;

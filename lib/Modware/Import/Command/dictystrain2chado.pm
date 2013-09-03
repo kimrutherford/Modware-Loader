@@ -19,7 +19,7 @@ has data => (
     default =>
 
         # sub { [qw/characteristics publications inventory genotype props/] }
-        sub { [qw/phenotype/] }
+        sub { [qw/phenotype genotype/] }
 );
 
 sub execute {
@@ -66,8 +66,8 @@ sub execute {
         my $strain_char_pub_uniquename = '';
         my $char_pub_id = $self->find_pub($strain_char_pub_uniquename);
 
-        if ($char_pub_id) {
-            if ( $self->has_characteristics( $hash->{uniquename} ) ) {
+        if ( $self->has_characteristics( $hash->{uniquename} ) ) {
+            if ($char_pub_id) {
                 foreach my $characteristics (
                     @{ $self->get_characteristics( $hash->{uniquename} ) } )
                 {
@@ -81,11 +81,11 @@ sub execute {
                     );
                 }
             }
-        }
-        else {
-            $self->logger->warn(
-                "Strain characteristics cannot be loaded. Required reference missing"
-            );
+            else {
+                $self->logger->warn(
+                    "Strain characteristics cannot be loaded. Required reference missing"
+                );
+            }
         }
 
         if ( $self->has_publications( $hash->{uniquename} ) ) {
@@ -170,29 +170,26 @@ sub execute {
                 my $phenotype_assay = $phenotype_data[$i][2];
                 my $phenotype_pmid  = $self->trim( $phenotype_data[$i][3] );
 
-                # my $s = sprintf "%s\t%s\t%s\t%s\t%s\n", $hash->{uniquename},
-                #     $phenotype_term, $phenotype_env, $phenotype_assay,
-                #     $phenotype_pmid;
-                # print $s;
-
-              # my $env_id = $self->find_or_create_environment($phenotype_env)
-              #     if $phenotype_env;
-
-                # print $phenotype_env. "\t" . $env_id . "\n" if $env_id;
+                my $env_id = $self->find_or_create_environment($phenotype_env)
+                    if $phenotype_env;
 
                 my $phenotype_id
                     = $self->find_or_create_phenotype( $phenotype_term,
                     $phenotype_assay )
                     if $phenotype_term;
-                print $phenotype_term. "\t" . $phenotype_id . "\n"
-                    if $phenotype_id;
+
+                my $genotype_id = $self->find_genotype( $hash->{uniquename} );
+                if ( !$genotype_id ) {
+                    $self->logger->logdie("Please load genotype data!");
+                }
             }
         }
 
     }
 
     $guard->commit;
-    $self->schema->storage->disconnect;
+
+    # $self->schema->storage->disconnect;
 
     return;
 }
